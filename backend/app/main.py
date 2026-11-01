@@ -11,10 +11,8 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from app.config import get_settings
 from app.core.rate_limit import limiter
 from app.core.security import ACCESS_COOKIE, CSRF_COOKIE, CSRF_HEADER, REFRESH_COOKIE
-from app.db import close_db, init_db
-from app.models import User
+from app.db import close_db, ensure_db
 from app.routers import analytics, auth, bills, cycles, data, income, planning, security, settings, spending
-from app.seed import seed_user
 from app.services import cache
 
 log = logging.getLogger("ledger")
@@ -53,9 +51,7 @@ def create_app(init_database: bool = True) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         if init_database:
-            await init_db()
-            async for user in User.find_all():
-                await seed_user(user.id)  # type: ignore[arg-type]
+            await ensure_db()
         yield
         if init_database:
             close_db()
@@ -76,6 +72,13 @@ def create_app(init_database: bool = True) -> FastAPI:
         return JSONResponse({"detail": "Too many attempts. Please wait and try again."}, status_code=429)
 
     app.add_middleware(CSRFAndVersionMiddleware)
+    if init_database:
+        # Serverless hosts may skip lifespan: make sure the database is ready on every request.
+        @app.middleware("http")
+        async def _db_ready(request: Request, call_next):
+            await ensure_db()
+            return await call_next(request)
+
     origins = [o.strip().rstrip("/") for o in cfg.frontend_origin.split(",") if o.strip()]
     if origins:
         # Added last so it runs first: preflight requests are answered before the CSRF check.

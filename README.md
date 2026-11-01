@@ -93,6 +93,13 @@ Caddy fetches the HTTPS certificate on first request and redirects HTTP to HTTPS
 
 The API container is read-only, non-root and `no-new-privileges`. It has outbound internet access, which it needs to reach Atlas, but no published ports.
 
+### Alternative: GitHub Pages (app) + Render (API), no domain needed
+
+- **App:** https://oshithroshantha.github.io/ledger/. Publish it with `.\deploy\deploy-pages.ps1 -ApiBase https://<render-service>.onrender.com`.
+- **API:** create it on Render from `render.yaml` (Render → New → Blueprint), then fill in `MONGO_URL` and `TOTP_ENC_KEY`.
+- **Why token mode:** `github.io` and `onrender.com` are different sites, so browsers block the API's cookies. The Blueprint sets `TOKEN_AUTH=true`: the access token stays in memory, and the rotating refresh token sits in local storage and goes only to `/auth/*` endpoints. Requests use `Authorization: Bearer`, CORS allows only `https://oshithroshantha.github.io`, and the strict CSP blocks foreign scripts.
+- **Free-plan limits:** Render sleeps after 15 idle minutes, so the first request can take about 50 s. Free Render has no shell, so run `create-user` from your PC against Atlas, using the same `TOTP_ENC_KEY`.
+
 ## 3. Create your user and set up Google Authenticator
 
 ```sh

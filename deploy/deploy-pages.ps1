@@ -14,7 +14,9 @@ param(
   [Parameter(Mandatory)][string]$ApiBase,
   [string]$AppHost = ''
 )
-$ErrorActionPreference = 'Stop'
+# 'Continue': Windows PowerShell treats any stderr output of native tools (e.g. build warnings) as
+# an error under 'Stop'. Failures are detected through $LASTEXITCODE instead.
+$ErrorActionPreference = 'Continue'
 $root = Split-Path $PSScriptRoot -Parent
 $frontend = Join-Path $root 'frontend'
 $out = Join-Path $frontend 'dist-pages'

@@ -24,7 +24,7 @@ function staticHosting(apiBase: string, cname: string): Plugin {
     "base-uri 'none'",
     "form-action 'self'",
     "object-src 'none'",
-    'upgrade-insecure-requests',
+    // no upgrade-insecure-requests: GitHub Pages already enforces HTTPS, and the API URL is https
   ].join('; ');
   let outDir = 'dist';
   return {
@@ -48,7 +48,9 @@ function staticHosting(apiBase: string, cname: string): Plugin {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
   const apiBase = (env.VITE_API_BASE ?? '').replace(/\/$/, '');
+  const base = env.VITE_BASE ?? '/';
   return {
+  base,
   plugins: [
     react(),
     ...(apiBase ? [staticHosting(apiBase, env.VITE_PAGES_CNAME ?? '')] : []),
@@ -62,22 +64,23 @@ export default defineConfig(({ mode }) => {
         short_name: 'Ledger',
         description: 'Personal money manager',
         lang: 'en',
-        start_url: '/',
-        scope: '/',
+        // relative to the manifest, so the app also works under a sub-path (GitHub Pages)
+        start_url: './',
+        scope: './',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#0B0D12',
         theme_color: '#0B0D12',
         icons: [
-          { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: '/icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+          { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         globIgnores: ['splash/**'],
-        navigateFallback: '/index.html',
+        navigateFallback: `${base}index.html`,
         navigateFallbackDenylist: [/^\/api\//],
         // Financial data is never cached by the service worker.
         runtimeCaching: [{ urlPattern: /^\/api\//, handler: 'NetworkOnly' }],

@@ -55,12 +55,22 @@ def set_csrf_cookie(response: Response, token: str) -> None:
     response.set_cookie(CSRF_COOKIE, token, **_cookie_kwargs("/", 7 * 24 * 3600, httponly=False))
 
 
-def _set_session_cookies(response: Response, user_id: str, family_id: str, refresh: str) -> None:
+def _set_session_cookies(response: Response, user_id: str, family_id: str, refresh: str) -> dict:
     s = get_settings()
-    response.set_cookie(
-        ACCESS_COOKIE, access_token(user_id, family_id), **_cookie_kwargs(ACCESS_COOKIE_PATH, s.access_ttl_minutes * 60)
-    )
+    access = access_token(user_id, family_id)
+    response.set_cookie(ACCESS_COOKIE, access, **_cookie_kwargs(ACCESS_COOKIE_PATH, s.access_ttl_minutes * 60))
     response.set_cookie(REFRESH_COOKIE, refresh, **_cookie_kwargs(REFRESH_COOKIE_PATH, s.refresh_ttl_days * 86400))
+    if not s.token_auth:
+        return {}
+    # Token mode (cross-site hosting): the client keeps these because its browser drops our cookies.
+    return {"access_token": access, "refresh_token": refresh, "expires_in": s.access_ttl_minutes * 60}
+
+
+def _raw_refresh(request: Request) -> str | None:
+    raw = request.cookies.get(REFRESH_COOKIE)
+    if not raw and get_settings().token_auth:
+        raw = request.headers.get("x-refresh-token") or None
+    return raw
 
 
 def clear_session_cookies(response: Response) -> None:
@@ -68,7 +78,7 @@ def clear_session_cookies(response: Response) -> None:
         response.delete_cookie(name, path=path, secure=get_settings().cookie_secure, httponly=True, samesite="strict")
 
 
-async def _issue_session(request: Request, response: Response, user: User, family_id: str | None = None) -> None:
+async def _issue_session(request: Request, response: Response, user: User, family_id: str | None = None) -> dict:
     refresh = new_opaque_token()
     family = family_id or new_id()
     await RefreshToken(
@@ -79,7 +89,7 @@ async def _issue_session(request: Request, response: Response, user: User, famil
         user_agent=request.headers.get("user-agent", "")[:300],
         ip=client_ip(request),
     ).insert()
-    _set_session_cookies(response, str(user.id), family, refresh)
+    return _set_session_cookies(response, str(user.id), family, refresh)
 
 
 async def revoke_family(family_id: str) -> None:
@@ -188,13 +198,13 @@ async def verify_2fa(request: Request, response: Response, body: Verify2FAIn) ->
     pre.used = True
     await pre.save()
     await user.save()
-    await _issue_session(request, response, user)
+    tokens = await _issue_session(request, response, user)
     await audit(request, "login_success", user.id, method=method)
-    return {"ok": True, "username": user.username, "recovery_codes_left": len(user.recovery_code_hashes)}
+    return {"ok": True, "username": user.username, "recovery_codes_left": len(user.recovery_code_hashes), **tokens}
 
 
 async def _session_from_refresh_cookie(request: Request) -> RefreshToken:
-    raw = request.cookies.get(REFRESH_COOKIE)
+    raw = _raw_refresh(request)
     if not raw:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Not authenticated")
     token = await RefreshToken.find_one(RefreshToken.token_hash == sha256(raw))
@@ -210,13 +220,13 @@ async def _session_from_refresh_cookie(request: Request) -> RefreshToken:
     return token
 
 
-async def _rotate(request: Request, response: Response, token: RefreshToken) -> None:
+async def _rotate(request: Request, response: Response, token: RefreshToken) -> dict:
     user = await User.get(token.user_id)
     if user is None:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Not authenticated")
     token.revoked, token.revoked_at = True, now_utc()
     await token.save()
-    await _issue_session(request, response, user, family_id=token.family_id)
+    return await _issue_session(request, response, user, family_id=token.family_id)
 
 
 @router.post("/refresh")
@@ -228,8 +238,7 @@ async def refresh(request: Request, response: Response) -> dict:
         await token.save()
     if token.locked:
         raise HTTPException(status.HTTP_423_LOCKED, "Session locked")
-    await _rotate(request, response, token)
-    return {"ok": True}
+    return {"ok": True, **await _rotate(request, response, token)}
 
 
 @router.post("/lock")
@@ -260,14 +269,14 @@ async def unlock(request: Request, response: Response, body: CodeIn) -> dict:
             status.HTTP_400_BAD_REQUEST, {"message": "Wrong code.", "remaining": MAX_2FA_FAILURES - token.unlock_failures}
         )
     await user.save()
-    await _rotate(request, response, token)
+    tokens = await _rotate(request, response, token)
     await audit(request, "unlock_success", user.id)
-    return {"ok": True}
+    return {"ok": True, **tokens}
 
 
 @router.post("/logout")
 async def logout(request: Request, response: Response) -> dict:
-    raw = request.cookies.get(REFRESH_COOKIE)
+    raw = _raw_refresh(request)
     if raw:
         token = await RefreshToken.find_one(RefreshToken.token_hash == sha256(raw))
         if token:

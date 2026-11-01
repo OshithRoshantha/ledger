@@ -56,6 +56,50 @@ async function csrfToken(): Promise<string> {
   return csrfPromise;
 }
 
+// ---------------------------------------------------------------- token mode
+// Cross-site hosting (github.io app + onrender.com API): browsers drop the API's cookies, so
+// the access token lives in memory only and the rotating refresh token in local storage.
+const TOKEN_MODE = import.meta.env.VITE_AUTH_MODE === 'token';
+const RT_KEY = 'ledger.rt';
+let accessToken: string | null = null;
+
+function storedRefresh(): string | null {
+  try {
+    return localStorage.getItem(RT_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function keepTokens(data: unknown) {
+  const t = data as { access_token?: string; refresh_token?: string } | null;
+  if (!TOKEN_MODE || !t?.access_token) return;
+  accessToken = t.access_token;
+  try {
+    if (t.refresh_token) localStorage.setItem(RT_KEY, t.refresh_token);
+  } catch {
+    /* storage unavailable: session lasts until the tab closes */
+  }
+}
+
+export function forgetTokens() {
+  accessToken = null;
+  try {
+    localStorage.removeItem(RT_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+function authHeaders(path: string): Record<string, string> {
+  if (!TOKEN_MODE) return {};
+  const h: Record<string, string> = {};
+  if (accessToken) h.Authorization = `Bearer ${accessToken}`;
+  const rt = storedRefresh();
+  if (rt && path.startsWith('/auth/')) h['X-Refresh-Token'] = rt;
+  return h;
+}
+
 type RefreshResult = 'ok' | 'locked' | 'fail';
 let refreshPromise: Promise<RefreshResult> | null = null;
 
@@ -63,12 +107,14 @@ let refreshPromise: Promise<RefreshResult> | null = null;
 function refreshSession(): Promise<RefreshResult> {
   refreshPromise ??= (async () => {
     try {
-      const res = await fetch(`${BASE}/auth/refresh`, {
-        method: 'POST',
-        credentials: CREDENTIALS,
-        headers: { 'X-CSRF-Token': await csrfToken() },
-      });
-      if (res.ok) return 'ok';
+      const headers: Record<string, string> = { ...authHeaders('/auth/refresh') };
+      if (!TOKEN_MODE) headers['X-CSRF-Token'] = await csrfToken();
+      const res = await fetch(`${BASE}/auth/refresh`, { method: 'POST', credentials: CREDENTIALS, headers });
+      if (res.ok) {
+        keepTokens(await res.json().catch(() => null));
+        return 'ok';
+      }
+      if (res.status === 401 && TOKEN_MODE) forgetTokens();
       return res.status === 423 ? 'locked' : 'fail';
     } catch {
       return 'fail';
@@ -88,9 +134,10 @@ interface Options {
 
 async function raw(path: string, opts: Options = {}): Promise<Response> {
   const method = opts.method ?? 'GET';
-  const headers: Record<string, string> = { Accept: 'application/json' };
+  const headers: Record<string, string> = { Accept: 'application/json', ...authHeaders(path) };
   if (opts.body !== undefined) headers['Content-Type'] = 'application/json';
-  if (method !== 'GET') headers['X-CSRF-Token'] = await csrfToken();
+  // Bearer tokens can't be forged cross-site, so token mode needs no CSRF token.
+  if (method !== 'GET' && !TOKEN_MODE) headers['X-CSRF-Token'] = await csrfToken();
   return fetch(`${BASE}${path}`, {
     method,
     headers,
@@ -110,7 +157,10 @@ export async function api<T = unknown>(path: string, opts: Options = {}): Promis
   if (res.status === 423 && !opts.noRetry) useApp.getState().setAuth('locked');
   const text = await res.text();
   const data = text ? safeJson(text) : null;
+  if (path === '/auth/logout' || path === '/auth/logout-all') forgetTokens();
+  if (path === '/auth/lock') accessToken = null;
   if (!res.ok) throw new ApiError(res.status, (data as { detail?: unknown } | null)?.detail ?? data);
+  keepTokens(data);
   return data as T;
 }
 

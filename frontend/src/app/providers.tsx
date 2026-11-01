@@ -21,7 +21,7 @@ export function Providers({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       {/* framer-motion honours prefers-reduced-motion for every animation */}
       <MotionConfig reducedMotion="user">
-        <BrowserRouter>{children}</BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>{children}</BrowserRouter>
       </MotionConfig>
     </QueryClientProvider>
   );

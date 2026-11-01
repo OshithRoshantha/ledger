@@ -1,5 +1,5 @@
 # Render Blueprint for the Ledger API (Render dashboard -> New -> Blueprint -> pick this repo).
-# The frontend is hosted on GitHub Pages; MongoDB is Atlas.
+# The app is on GitHub Pages (https://oshithroshantha.github.io/ledger/); MongoDB is Atlas.
 services:
   - type: web
     name: ledger-api
@@ -15,6 +15,12 @@ services:
         value: production
       - key: COOKIE_SECURE
         value: "true"
+      # github.io and onrender.com are different sites: browsers block the API's cookies,
+      # so the API issues bearer tokens and only this origin may call it.
+      - key: TOKEN_AUTH
+        value: "true"
+      - key: FRONTEND_ORIGIN
+        value: https://oshithroshantha.github.io
       - key: MONGO_DB
         value: ledger
       - key: DEFAULT_TIMEZONE
@@ -29,6 +35,4 @@ services:
       - key: MONGO_URL              # Atlas connection string with the app user's password
         sync: false
       - key: TOTP_ENC_KEY           # copy from ledger/.env (must match the key used by create-user)
-        sync: false
-      - key: FRONTEND_ORIGIN        # e.g. https://money.example.com (the GitHub Pages custom domain)
         sync: false

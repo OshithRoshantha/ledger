@@ -3,6 +3,7 @@ from datetime import timedelta
 from beanie import PydanticObjectId
 from fastapi import Depends, HTTPException, Request, status
 
+from app.config import get_settings
 from app.core.security import ACCESS_COOKIE, TokenError, decode_jwt, now_utc
 from app.models import AppSettings, RefreshToken, User, aware
 from app.services.ledger import get_app_settings
@@ -21,6 +22,9 @@ async def current_session(request: Request) -> RefreshToken:
     idle auto-lock server-side.
     """
     token = request.cookies.get(ACCESS_COOKIE)
+    auth = request.headers.get("authorization", "")
+    if auth.lower().startswith("bearer ") and get_settings().token_auth:
+        token = auth[7:].strip()
     if not token:
         raise UNAUTHORISED
     try:

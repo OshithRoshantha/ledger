@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     # Comma-separated origins allowed to call the API cross-origin, e.g. https://app.example.com
     # (needed when the frontend is hosted separately, like GitHub Pages + Render).
     frontend_origin: str = ""
+    # Token mode for cross-site hosting (github.io + onrender.com), where browsers block the
+    # API's cookies: tokens are returned in JSON and sent back as Authorization / X-Refresh-Token.
+    token_auth: bool = False
     totp_issuer: str = "Ledger"
     default_timezone: str = "Asia/Colombo"
     default_salary_day: int = 5

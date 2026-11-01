@@ -10,7 +10,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 from app.config import get_settings
 from app.core.rate_limit import limiter
-from app.core.security import CSRF_COOKIE, CSRF_HEADER
+from app.core.security import ACCESS_COOKIE, CSRF_COOKIE, CSRF_HEADER, REFRESH_COOKIE
 from app.db import close_db, init_db
 from app.models import User
 from app.routers import analytics, auth, bills, cycles, data, income, planning, security, settings, spending
@@ -30,7 +30,11 @@ class CSRFAndVersionMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next):
         is_write = request.method not in SAFE_METHODS and request.url.path.startswith("/api/")
-        if is_write:
+        # CSRF exploits ambient cookies. In token mode a request without session cookies carries
+        # no ambient authority (the bearer token must be attached by our own script), so skip it.
+        cookie_session = ACCESS_COOKIE in request.cookies or REFRESH_COOKIE in request.cookies
+        needs_csrf = is_write and (cookie_session or not get_settings().token_auth)
+        if needs_csrf:
             cookie = request.cookies.get(CSRF_COOKIE, "")
             header = request.headers.get(CSRF_HEADER, "")
             if not cookie or not header or not hmac.compare_digest(cookie.encode(), header.encode()):
@@ -80,7 +84,7 @@ def create_app(init_database: bool = True) -> FastAPI:
             allow_origins=origins,
             allow_credentials=True,
             allow_methods=["GET", "POST", "PATCH", "DELETE"],
-            allow_headers=["Content-Type", "X-CSRF-Token", "Accept"],
+            allow_headers=["Content-Type", "X-CSRF-Token", "Accept", "Authorization", "X-Refresh-Token"],
             expose_headers=["Content-Disposition"],
             max_age=600,
         )

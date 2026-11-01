@@ -2,15 +2,16 @@ import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, inputClass } from '@/components/ui/primitives';
 import { api, ApiError } from '@/lib/api';
-import { useApp } from '@/lib/store';
+import { local, useApp } from '@/lib/store';
 import { AuthLayout, Logo } from './Logo';
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => local.get('username') ?? '');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const setPreAuth = useApp((s) => s.setPreAuth);
+  const setAuth = useApp((s) => s.setAuth);
   const navigate = useNavigate();
 
   const submit = async (e: FormEvent) => {
@@ -18,9 +19,22 @@ export default function LoginPage() {
     setBusy(true);
     setError('');
     try {
-      const res = await api<{ pre_auth_token: string }>('/auth/login', { method: 'POST', body: { username, password }, noRetry: true });
-      setPreAuth(res.pre_auth_token);
+      const deviceToken = local.get('device');
+      const res = await api<{ pre_auth_token?: string; trusted?: boolean }>('/auth/login', {
+        method: 'POST',
+        body: { username, password, ...(deviceToken ? { device_token: deviceToken } : {}) },
+        noRetry: true,
+      });
       setPassword('');
+      local.set('username', username.trim().toLowerCase());
+      if (res.trusted) {
+        // remembered device: the password was enough
+        const me = await api<{ username: string; onboarded: boolean }>('/auth/me', { noRetry: true });
+        setAuth('authed', me);
+        navigate('/', { replace: true });
+        return;
+      }
+      setPreAuth(res.pre_auth_token!);
       navigate('/login/verify');
     } catch (err) {
       setError(err instanceof ApiError && err.status === 429 ? 'Too many attempts. Wait a few minutes and try again.' : 'Invalid username or password.');

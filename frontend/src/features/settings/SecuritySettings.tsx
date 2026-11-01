@@ -11,6 +11,7 @@ import { Group, Row, SubPage } from './shared';
 type Activity = {
   events: { event: string; ip: string; user_agent: string; at: string }[];
   sessions: { ip: string; user_agent: string; last_seen_at: string; current: boolean }[];
+  trusted_devices: { id: string; user_agent: string; ip: string; last_used_at: string; expires_at: string }[];
 };
 
 const EVENT_LABELS: Record<string, string> = {
@@ -28,6 +29,8 @@ const EVENT_LABELS: Record<string, string> = {
   refresh_reuse_detected: 'Suspicious session reuse blocked',
   settings_changed: 'Settings changed',
   data_imported: 'Backup imported',
+  device_trusted: 'Device remembered',
+  device_forgotten: 'Device forgotten',
 };
 
 function device(ua: string): string {
@@ -75,6 +78,33 @@ export default function SecuritySettings() {
             setAuth('anon');
           }}
         />
+      </Group>
+
+      <Group title="Remembered devices" footer="These skip the 2FA code at sign-in (your password is still required) for 30 days. Changing your password or logging out everywhere forgets them all.">
+        {(data?.trusted_devices ?? []).length === 0 ? (
+          <li className="px-4 py-3 text-[15px] text-muted">No remembered devices.</li>
+        ) : (
+          data!.trusted_devices.map((d) => (
+            <Row
+              key={d.id}
+              icon={<MonitorSmartphone size={20} className="text-muted" aria-hidden />}
+              label={device(d.user_agent)}
+              detail={`until ${new Date(d.expires_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}`}
+              trailing={
+                <button
+                  type="button"
+                  className="tap -my-2 -mr-2 px-2 text-[15px] font-semibold text-negative"
+                  onClick={async () => {
+                    await api(`/security/devices/${d.id}`, { method: 'DELETE' }).catch(() => undefined);
+                    qc.invalidateQueries({ queryKey: ['activity'] });
+                  }}
+                >
+                  Forget
+                </button>
+              }
+            />
+          ))
+        )}
       </Group>
 
       <Group title="Recent activity">

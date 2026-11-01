@@ -81,6 +81,26 @@ class RefreshToken(Document):
         ]
 
 
+class TrustedDevice(Document):
+    """A browser the user chose to remember: it skips the 2FA code (never the password)."""
+
+    user_id: PydanticObjectId
+    token_hash: str
+    expires_at: datetime
+    revoked: bool = False
+    user_agent: str = ""
+    ip: str = ""
+    created_at: datetime = Field(default_factory=utcnow)
+    last_used_at: datetime = Field(default_factory=utcnow)
+
+    class Settings:
+        name = "trusted_devices"
+        indexes = [
+            IndexModel([("token_hash", ASCENDING)], unique=True),
+            IndexModel([("user_id", ASCENDING), ("revoked", ASCENDING)]),
+        ]
+
+
 class PreAuth(Document):
     """State for a short-lived pre-auth token (password OK, waiting for 2FA)."""
 
@@ -329,6 +349,7 @@ class Goal(Document):
 
 
 ALL_DOCUMENTS = [
+    TrustedDevice,
     CycleDoc,
     Budget,
     Goal,

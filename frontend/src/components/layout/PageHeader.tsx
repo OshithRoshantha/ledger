@@ -5,19 +5,36 @@ import { useActiveCycle, useSettings } from '@/lib/queries';
 import { useApp } from '@/lib/store';
 
 /** Sticky, safe-area-aware page header. */
-export function PageHeader({ title, right, children, back }: { title: string; right?: ReactNode; children?: ReactNode; back?: ReactNode }) {
+export function PageHeader({
+  title,
+  hideTitle,
+  right,
+  children,
+  back,
+}: {
+  title: string;
+  /** keep the title for screen readers only (e.g. the Dashboard) */
+  hideTitle?: boolean;
+  right?: ReactNode;
+  children?: ReactNode;
+  back?: ReactNode;
+}) {
   return (
     <header
       className="header-bg sticky top-0 z-30 border-b border-hairline backdrop-blur-xl"
-      style={{ paddingTop: 'max(var(--safe-top), 12px)' }}
+      style={{ paddingTop: hideTitle ? 'max(var(--safe-top), 6px)' : 'max(var(--safe-top), 12px)' }}
     >
-      <div className="flex min-h-[48px] items-center justify-between gap-2 px-4">
-        <div className="flex min-w-0 items-center gap-1">
-          {back}
-          <h1 className="truncate text-[28px] font-bold tracking-tight">{title}</h1>
+      {hideTitle ? (
+        <h1 className="sr-only">{title}</h1>
+      ) : (
+        <div className="flex min-h-[48px] items-center justify-between gap-2 px-4">
+          <div className="flex min-w-0 items-center gap-1">
+            {back}
+            <h1 className="truncate text-[28px] font-bold tracking-tight">{title}</h1>
+          </div>
+          {right}
         </div>
-        {right}
-      </div>
+      )}
       {children}
     </header>
   );

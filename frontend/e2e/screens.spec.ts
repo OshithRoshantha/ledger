@@ -122,7 +122,7 @@ async function assertLayout(page: Page, insets: { top: number; bottom: number })
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const main = document.querySelector<HTMLElement>('#main');
-    const title = document.querySelector('header h1')?.getBoundingClientRect();
+    const title = document.querySelector('header h1:not(.sr-only)')?.getBoundingClientRect();
     const nav = document.querySelector<HTMLElement>('nav[aria-label="Main"]');
     const navList = nav?.querySelector('ul')?.getBoundingClientRect();
     const tabTargets = nav ? [...nav.querySelectorAll<HTMLElement>('a, button')].map((el) => el.getBoundingClientRect()) : [];
@@ -211,9 +211,9 @@ test.describe('dashboard tabs', () => {
     await page.goto('/');
     await expect(page.getByText(/You can spend Rs [\d,]+\/day for \d+ more days/)).toBeVisible();
     await expect(page.getByText('vs Oct 2026, same day 8').first()).toBeVisible();
-    await page.getByLabel('Compare with').selectOption('avg3');
+    await page.getByRole('radio', { name: /average of the last 3 cycles/ }).click();
     await expect(page.getByText(/^vs 3-cycle avg \(/).first()).toBeVisible();
-    await page.getByLabel('Compare with').selectOption('yoy');
+    await page.getByRole('radio', { name: /same cycle last year/ }).click();
     await expect(page.getByText(/^vs Nov 2025, same day 8/).first()).toBeVisible();
     // tap a KPI card -> drill-down sheet with entries
     await page.getByRole('button', { name: /Total spent/ }).click();

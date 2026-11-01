@@ -27,7 +27,7 @@ from app.core.security import (
     sha256,
     verify_secret,
 )
-from app.models import PreAuth, RefreshToken, User, aware
+from app.models import PreAuth, RefreshToken, TrustedDevice, User, aware
 from app.schemas import CodeIn, LoginIn, Verify2FAIn
 from app.services.audit import audit
 from app.services.ledger import get_app_settings
@@ -39,6 +39,7 @@ MAX_FAILED_LOGINS = 10
 FAILED_WINDOW = timedelta(hours=1)
 LOCKOUT = timedelta(minutes=30)
 MAX_2FA_FAILURES = 5
+TRUSTED_DEVICE_TTL = timedelta(days=30)
 
 
 def _cookie_kwargs(path: str, max_age: int, httponly: bool = True) -> dict:
@@ -133,7 +134,7 @@ async def csrf(request: Request, response: Response) -> dict:
 
 @router.post("/login")
 @limiter.limit(LOGIN_LIMIT)
-async def login(request: Request, body: LoginIn) -> dict:
+async def login(request: Request, response: Response, body: LoginIn) -> dict:
     user = await User.find_one(User.username == body.username.strip().lower())
     if user is None:
         burn_password_check(body.password)
@@ -162,6 +163,21 @@ async def login(request: Request, body: LoginIn) -> dict:
 
     user.failed_logins, user.failed_window_start, user.locked_until = 0, None, None
     await user.save()
+
+    # Remembered device: the password was correct, so a valid device token replaces the 2FA code.
+    if body.device_token:
+        device = await TrustedDevice.find_one(
+            {"token_hash": sha256(body.device_token), "user_id": user.id, "revoked": False}
+        )
+        if device and aware(device.expires_at) > now:
+            device.last_used_at = now
+            device.ip = client_ip(request)
+            await device.save()
+            tokens = await _issue_session(request, response, user)
+            await audit(request, "login_success", user.id, method="trusted_device")
+            return {"ok": True, "trusted": True, "username": user.username,
+                    "recovery_codes_left": len(user.recovery_code_hashes), **tokens}
+
     jti = new_id()
     await PreAuth(
         jti=jti, user_id=user.id, expires_at=now + timedelta(minutes=get_settings().preauth_ttl_minutes)  # type: ignore[arg-type]
@@ -199,8 +215,24 @@ async def verify_2fa(request: Request, response: Response, body: Verify2FAIn) ->
     await pre.save()
     await user.save()
     tokens = await _issue_session(request, response, user)
+    extra: dict = {}
+    if body.remember_device:
+        device_token = new_opaque_token()
+        await TrustedDevice(
+            user_id=user.id,  # type: ignore[arg-type]
+            token_hash=sha256(device_token),
+            expires_at=now_utc() + TRUSTED_DEVICE_TTL,
+            user_agent=request.headers.get("user-agent", "")[:300],
+            ip=client_ip(request),
+        ).insert()
+        extra = {"device_token": device_token, "device_expires_in": int(TRUSTED_DEVICE_TTL.total_seconds())}
+        await audit(request, "device_trusted", user.id)
     await audit(request, "login_success", user.id, method=method)
-    return {"ok": True, "username": user.username, "recovery_codes_left": len(user.recovery_code_hashes), **tokens}
+    return {"ok": True, "username": user.username, "recovery_codes_left": len(user.recovery_code_hashes), **tokens, **extra}
+
+
+async def forget_devices(user_id: PydanticObjectId) -> None:
+    await TrustedDevice.get_motor_collection().update_many({"user_id": user_id, "revoked": False}, {"$set": {"revoked": True}})
 
 
 async def _session_from_refresh_cookie(request: Request) -> RefreshToken:
@@ -289,6 +321,7 @@ async def logout(request: Request, response: Response) -> dict:
 @router.post("/logout-all")
 async def logout_all(request: Request, response: Response, session: RefreshToken = Depends(current_session)) -> dict:
     await revoke_all(session.user_id)
+    await forget_devices(session.user_id)
     await audit(request, "logout_all", session.user_id)
     clear_session_cookies(response)
     return {"ok": True}

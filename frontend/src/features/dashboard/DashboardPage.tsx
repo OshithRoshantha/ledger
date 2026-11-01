@@ -24,10 +24,10 @@ const TABS: { key: DashTab; label: string }[] = [
   { key: 'plan', label: 'Plan' },
 ];
 
-const COMPARE: { value: CompareMode; label: string }[] = [
-  { value: 'last', label: 'vs last cycle' },
-  { value: 'avg3', label: 'vs 3-cycle avg' },
-  { value: 'yoy', label: 'vs same cycle last year' },
+const COMPARE: { value: CompareMode; label: string; full: string }[] = [
+  { value: 'last', label: 'Last cycle', full: 'Compare with last cycle' },
+  { value: 'avg3', label: '3-cycle avg', full: 'Compare with the average of the last 3 cycles' },
+  { value: 'yoy', label: 'Last year', full: 'Compare with the same cycle last year' },
 ];
 
 export default function DashboardPage() {
@@ -66,24 +66,31 @@ export default function DashboardPage() {
 
   return (
     <>
-      <PageHeader title="Ledger">
+      <PageHeader title="Dashboard" hideTitle>
         <CycleSwitcher />
-        <div className="px-4 pb-2">
-          <label className="sr-only" htmlFor="compare">
-            Compare with
-          </label>
-          <select
-            id="compare"
-            value={compare}
-            onChange={(e) => setCompare(e.target.value as CompareMode)}
-            className="h-9 w-full rounded-xl border border-hairline bg-elevated px-3 text-[14px] font-medium text-text"
-          >
+        <div className="flex items-center gap-2 px-4 pb-2">
+          <span className="shrink-0 text-[12px] font-medium text-muted" id="compare-label">
+            Compare
+          </span>
+          <div role="radiogroup" aria-labelledby="compare-label" className="flex flex-1 rounded-full bg-elevated">
             {COMPARE.map((c) => (
-              <option key={c.value} value={c.value}>
+              <button
+                key={c.value}
+                type="button"
+                role="radio"
+                aria-checked={compare === c.value}
+                aria-label={c.full}
+                title={c.full}
+                onClick={() => setCompare(c.value)}
+                className={clsx(
+                  'h-11 flex-1 whitespace-nowrap rounded-full border-[3px] border-transparent px-1 text-[13px] font-semibold transition',
+                  compare === c.value ? 'bg-brand text-white' : 'text-muted',
+                )}
+              >
                 {c.label}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
         </div>
         <div role="tablist" aria-label="Dashboard sections" className="scroll-pane flex gap-1 overflow-x-auto px-3 pb-2">
           {TABS.map((t) => (

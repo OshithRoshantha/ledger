@@ -3,19 +3,20 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from app.core import totp
 from app.core.deps import current_session, current_user
 from app.core.rate_limit import SENSITIVE_LIMIT, limiter
-from app.core.security import hash_secret, new_recovery_codes, password_problems, verify_secret
-from app.models import AuditLog, RefreshToken, User
+from app.core.security import hash_secret, new_recovery_codes, now_utc, password_problems, verify_secret
+from app.core.deps import oid
+from app.models import AuditLog, RefreshToken, TrustedDevice, User, aware
 from app.schemas import ChangePasswordIn, CodeIn, PasswordAndCodeIn
 from app.services.audit import audit
 
-from .auth import check_totp_or_recovery, revoke_all
+from .auth import check_totp_or_recovery, forget_devices, revoke_all
 
 router = APIRouter(prefix="/security", tags=["security"])
 
 AUTH_EVENTS = [
     "login_success", "login_failed", "2fa_failed", "account_locked", "logout", "logout_all",
     "unlock_failed", "unlock_success", "password_changed", "2fa_reset", "recovery_codes_regenerated",
-    "refresh_reuse_detected", "settings_changed", "data_imported",
+    "refresh_reuse_detected", "settings_changed", "data_imported", "device_trusted", "device_forgotten",
 ]
 
 
@@ -39,6 +40,7 @@ async def change_password(
     user.password_hash = hash_secret(body.new_password)
     await user.save()
     await revoke_all(user.id, except_family=session.family_id)  # type: ignore[arg-type]
+    await forget_devices(user.id)  # type: ignore[arg-type]
     await audit(request, "password_changed", user.id)
     return {"ok": True}
 
@@ -67,6 +69,7 @@ async def confirm_reset_2fa(request: Request, body: CodeIn, user: User = Depends
         raise HTTPException(status.HTTP_400_BAD_REQUEST, "Wrong code.")
     user.totp_secret_enc, user.pending_totp_secret_enc, user.last_totp_step = user.pending_totp_secret_enc, None, step
     await user.save()
+    await forget_devices(user.id)  # type: ignore[arg-type]
     await audit(request, "2fa_reset", user.id)
     return {"ok": True}
 
@@ -105,4 +108,21 @@ async def activity(user: User = Depends(current_user), session: RefreshToken = D
             }
             for s in sessions
         ],
+        "trusted_devices": [
+            {"id": str(d.id), "user_agent": d.user_agent, "ip": d.ip, "created_at": d.created_at.isoformat(),
+             "last_used_at": d.last_used_at.isoformat(), "expires_at": d.expires_at.isoformat()}
+            for d in await TrustedDevice.find({"user_id": user.id, "revoked": False}).sort("-last_used_at").to_list()
+            if aware(d.expires_at) > now_utc()
+        ],
     }
+
+
+@router.delete("/devices/{device_id}")
+async def forget_device(request: Request, device_id: str, user: User = Depends(current_user)) -> dict:
+    device = await TrustedDevice.find_one({"_id": oid(device_id), "user_id": user.id})
+    if device is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Not found")
+    device.revoked = True
+    await device.save()
+    await audit(request, "device_forgotten", user.id)
+    return {"ok": True}

@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Button, inputClass } from '@/components/ui/primitives';
 import { api, ApiError } from '@/lib/api';
 import { haptic } from '@/lib/haptics';
-import { useApp } from '@/lib/store';
+import { local, useApp } from '@/lib/store';
 import { AuthLayout } from './Logo';
 import { OtpInput } from './OtpInput';
 
@@ -18,6 +18,7 @@ export default function VerifyPage() {
   const [error, setError] = useState('');
   const [shakeKey, setShakeKey] = useState(0);
   const [busy, setBusy] = useState(false);
+  const [remember, setRemember] = useState(true);
 
   if (!token) return <Navigate to="/login" replace />;
 
@@ -25,7 +26,12 @@ export default function VerifyPage() {
     setBusy(true);
     setError('');
     try {
-      await api('/auth/verify-2fa', { method: 'POST', body: { pre_auth_token: token, code: value }, noRetry: true });
+      const res = await api<{ device_token?: string }>('/auth/verify-2fa', {
+        method: 'POST',
+        body: { pre_auth_token: token, code: value, remember_device: remember },
+        noRetry: true,
+      });
+      if (res.device_token) local.set('device', res.device_token);
       const me = await api<{ username: string; onboarded: boolean }>('/auth/me', { noRetry: true });
       setPreAuth(null);
       haptic('success');
@@ -93,7 +99,14 @@ export default function VerifyPage() {
           {error}
         </p>
       ) : null}
-      <div className="mt-8 flex flex-col items-center gap-1">
+      <label className="mx-auto mt-6 flex min-h-[44px] max-w-[320px] cursor-pointer items-center gap-3 rounded-2xl bg-elevated px-4 py-3">
+        <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--brand)]" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+        <span>
+          <span className="block text-[15px] font-medium">Remember this device</span>
+          <span className="block text-[13px] text-muted">Skip the code here for 30 days. Your password is still required.</span>
+        </span>
+      </label>
+      <div className="mt-6 flex flex-col items-center gap-1">
         <Button
           variant="ghost"
           onClick={() => {

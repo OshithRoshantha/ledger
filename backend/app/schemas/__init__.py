@@ -37,11 +37,14 @@ def _clean_name(v: str) -> str:
 class LoginIn(Strict):
     username: Annotated[str, Field(min_length=1, max_length=64)]
     password: Annotated[str, Field(min_length=1, max_length=256)]
+    # token from a previous "Remember this device" login; skips the 2FA code when valid
+    device_token: Optional[Annotated[str, Field(min_length=20, max_length=256)]] = None
 
 
 class Verify2FAIn(Strict):
     pre_auth_token: Annotated[str, Field(min_length=10, max_length=2048)]
     code: Annotated[str, Field(min_length=6, max_length=32)]
+    remember_device: bool = False
 
 
 class CodeIn(Strict):

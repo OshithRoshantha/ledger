@@ -173,7 +173,9 @@ function Stat({ label, value, onClick }: { label: string; value: number; onClick
   return (
     <Comp type={onClick ? 'button' : undefined} onClick={onClick} className="min-w-0 rounded-xl bg-elevated px-2.5 py-2 text-left">
       <span className="block truncate text-[12px] text-muted">{label}</span>
-      <span className={clsx('num block truncate text-[15px] font-semibold', value < 0 && 'text-negative')}>{formatRs(value, { whole: true })}</span>
+      <span className={clsx('num block truncate text-[13px] font-semibold min-[390px]:text-[15px]', value < 0 && 'text-negative')}>
+        {formatRs(value, { whole: true })}
+      </span>
     </Comp>
   );
 }

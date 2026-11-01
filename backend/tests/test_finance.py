@@ -58,6 +58,21 @@ async def test_pending_salary_auto_created_next_cycle(authed, freeze_today):
     assert (await authed.get(f"{API}/income")).json()["items"] == []  # deleting sticks
 
 
+async def test_pending_salary_created_once_under_concurrency(authed, freeze_today):
+    """Opening the app fires several requests at once; only one pending salary may appear."""
+    import asyncio
+
+    from app.services.ledger import ensure_pending_salary, get_app_settings
+
+    freeze_today(date(2026, 11, 12))
+    await onboard(authed, 15_000_000)
+    freeze_today(date(2026, 12, 6))
+    cfg = await get_app_settings((await IncomeEntry.find_one()).user_id)
+    await asyncio.gather(*(ensure_pending_salary(cfg.user_id, cfg, "2026-12") for _ in range(5)))
+    pending = await IncomeEntry.find({"cycle": "2026-12", "status": "pending"}).to_list()
+    assert len(pending) == 1
+
+
 async def test_mark_paid_reduces_balance_and_committed_then_unpay_restores(authed, freeze_today):
     freeze_today()
     await onboard(authed, 10_000_000)

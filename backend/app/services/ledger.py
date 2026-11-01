@@ -6,7 +6,9 @@ from typing import Optional
 from beanie import PydanticObjectId
 
 from app.config import get_settings
-from app.models import AmountHistory, AppSettings, FixedExpense, IncomeEntry, IncomeSource
+from pymongo.errors import DuplicateKeyError
+
+from app.models import AmountHistory, AppSettings, FixedExpense, IncomeEntry, IncomeSource, Meta
 from app.services import cache, clock, cycle_store
 from app.services.cycles import Span, local_day_to_utc
 
@@ -116,6 +118,12 @@ async def ensure_pending_salary(user_id: PydanticObjectId, cfg: AppSettings, lab
         if amount <= 0:
             continue
         if await IncomeEntry.find_one({"user_id": user_id, "source_id": src.id, "cycle": label}):
+            continue
+        # Several requests run this at once when the app opens. Claim the (source, cycle) slot
+        # through the unique `meta.key` index first, so only one of them creates the entry.
+        try:
+            await Meta(key=f"pending-salary:{user_id}:{src.id}:{label}").insert()
+        except DuplicateKeyError:
             continue
         await IncomeEntry(
             user_id=user_id,

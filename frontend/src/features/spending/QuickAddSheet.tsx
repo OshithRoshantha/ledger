@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { AmountDisplay, Keypad } from '@/components/keypad/Keypad';
 import { BottomSheet } from '@/components/sheets/BottomSheet';
 import { SalaryOverridePrompt, type OverrideAsk } from '@/components/sheets/SalaryOverridePrompt';
-import { AttributionChip } from '@/components/ui/AttributionChip';
 import { Button, Chip, Segmented, inputClass } from '@/components/ui/primitives';
 import { api } from '@/lib/api';
 import { isoDay } from '@/lib/cycle';
@@ -134,7 +133,6 @@ export function QuickAddSheet() {
             <Keypad value={incomeRaw} onChange={setIncomeRaw} compact />
             <div className="flex flex-wrap items-center gap-2">
               <input type="date" className={inputClass + ' !w-auto min-w-0 flex-1 basis-40'} value={draft.date} aria-label="Date" onChange={(e) => e.target.value && setDraft({ ...draft, date: e.target.value })} />
-              <AttributionChip day={draft.date} />
             </div>
             <input className={inputClass} placeholder="Note (optional)" maxLength={280} value={incomeNote} aria-label="Note" onChange={(e) => setIncomeNote(e.target.value)} />
           </div>

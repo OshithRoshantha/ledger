@@ -1,7 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { CheckCircle2, ChevronLeft, Plus } from 'lucide-react';
 import { SalaryOverridePrompt, type OverrideAsk } from '@/components/sheets/SalaryOverridePrompt';
-import { AttributionChip } from '@/components/ui/AttributionChip';
 import { api } from '@/lib/api';
 import type { ResolveResult } from '@/lib/types';
 import { useState } from 'react';
@@ -181,7 +180,6 @@ function IncomeSheet({ entry, onClose }: { entry: IncomeEntry | null; onClose: (
         <Field label={confirming ? 'Received on' : 'Date'}>
           <div className="flex flex-wrap items-center gap-2">
             <input type="date" className={inputClass + ' !w-auto min-w-0 flex-1 basis-40'} value={date} onChange={(e) => e.target.value && setDate(e.target.value)} />
-            <AttributionChip day={date} />
           </div>
         </Field>
         <Field label="Note">

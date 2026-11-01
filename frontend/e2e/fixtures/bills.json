@@ -1,0 +1,129 @@
+{
+ "cycle": "2026-11",
+ "start_date": "2026-11-05",
+ "end_date": "2026-12-04",
+ "is_current": true,
+ "reminder_window": false,
+ "groups": [
+  "Foods & Households",
+  "Utility Bills",
+  "Subscriptions"
+ ],
+ "items": [
+  {
+   "id": "6ae70a3c832b7e173e808aa4",
+   "name": "Foods & Households",
+   "group": "Foods & Households",
+   "icon": "shopping-basket",
+   "colour": "#E69F00",
+   "template_amount": 3000000,
+   "status": "paid",
+   "payment": {
+    "id": "6ae70a3d832b7e173e808b45",
+    "fixed_expense_id": "6ae70a3c832b7e173e808aa4",
+    "cycle": "2026-11",
+    "amount_paid": 3000000,
+    "paid_at": "2026-11-06T06:30:00+00:00",
+    "day": "2026-11-06",
+    "note": "",
+    "deleted_at": null,
+    "created_at": "2026-11-01T09:45:33.350000+00:00"
+   }
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa5",
+   "name": "Water Bill",
+   "group": "Utility Bills",
+   "icon": "droplets",
+   "colour": "#56B4E9",
+   "template_amount": 200000,
+   "status": "pending",
+   "payment": null
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa6",
+   "name": "Electricity Bill",
+   "group": "Utility Bills",
+   "icon": "zap",
+   "colour": "#56B4E9",
+   "template_amount": 200000,
+   "status": "paid",
+   "payment": {
+    "id": "6ae70a3d832b7e173e808b46",
+    "fixed_expense_id": "6ae70a3c832b7e173e808aa6",
+    "cycle": "2026-11",
+    "amount_paid": 285000,
+    "paid_at": "2026-11-10T06:30:00+00:00",
+    "day": "2026-11-10",
+    "note": "",
+    "deleted_at": null,
+    "created_at": "2026-11-01T09:45:33.356000+00:00"
+   }
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa7",
+   "name": "Television",
+   "group": "Utility Bills",
+   "icon": "tv",
+   "colour": "#56B4E9",
+   "template_amount": 100000,
+   "status": "pending",
+   "payment": null
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa8",
+   "name": "Mobile Internet",
+   "group": "Utility Bills",
+   "icon": "smartphone",
+   "colour": "#56B4E9",
+   "template_amount": 50000,
+   "status": "pending",
+   "payment": null
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa9",
+   "name": "Broadband",
+   "group": "Utility Bills",
+   "icon": "wifi",
+   "colour": "#56B4E9",
+   "template_amount": 140000,
+   "status": "paid",
+   "payment": {
+    "id": "6ae70a3d832b7e173e808b48",
+    "fixed_expense_id": "6ae70a3c832b7e173e808aa9",
+    "cycle": "2026-11",
+    "amount_paid": 140000,
+    "paid_at": "2026-11-08T06:30:00+00:00",
+    "day": "2026-11-08",
+    "note": "",
+    "deleted_at": null,
+    "created_at": "2026-11-01T09:45:33.365000+00:00"
+   }
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aaa",
+   "name": "Claude Pro",
+   "group": "Subscriptions",
+   "icon": "sparkles",
+   "colour": "#CC79A7",
+   "template_amount": 700000,
+   "status": "paid",
+   "payment": {
+    "id": "6ae70a3d832b7e173e808b47",
+    "fixed_expense_id": "6ae70a3c832b7e173e808aaa",
+    "cycle": "2026-11",
+    "amount_paid": 700000,
+    "paid_at": "2026-11-07T06:30:00+00:00",
+    "day": "2026-11-07",
+    "note": "",
+    "deleted_at": null,
+    "created_at": "2026-11-01T09:45:33.360000+00:00"
+   }
+  }
+ ],
+ "paid_count": 4,
+ "total_count": 7,
+ "paid_amount": 4125000,
+ "pending_amount": 350000,
+ "total_amount": 4475000
+}

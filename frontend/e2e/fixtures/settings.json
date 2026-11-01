@@ -1,0 +1,23 @@
+{
+ "id": "6ae70a3c832b7e173e808aa3",
+ "salary_day": 5,
+ "salary_history": [
+  {
+   "amount": 18500000,
+   "effective_from_cycle": "2000-01"
+  }
+ ],
+ "timezone": "Asia/Colombo",
+ "currency": "LKR",
+ "theme": "dark",
+ "auto_lock_minutes": 10,
+ "reminder_days_before_cycle_end": 5,
+ "onboarded": true,
+ "last_category_id": "6ae70a3c832b7e173e808aac",
+ "last_reason_id": "6ae70a3c832b7e173e808ab6",
+ "last_method": "bank_transfer",
+ "current_cycle": "2026-11",
+ "current_cycle_start": "2026-11-05",
+ "current_cycle_end": "2026-12-04",
+ "salary_amount": 18500000
+}

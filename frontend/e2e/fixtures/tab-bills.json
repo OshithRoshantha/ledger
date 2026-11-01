@@ -1,0 +1,858 @@
+{
+ "meta": {
+  "cycle": "2026-11",
+  "label": "Nov 2026",
+  "start": "2026-11-05",
+  "end": "2026-12-04",
+  "is_current": true,
+  "is_future": false,
+  "is_override": false,
+  "day_index": 8,
+  "days_total": 30,
+  "days_left": 22,
+  "elapsed_pct": 27,
+  "prev_cycle": "2026-10",
+  "compare": null,
+  "history_cycles": 6
+ },
+ "status": {
+  "paid_count": 4,
+  "total_count": 7,
+  "paid_amount": 4125000,
+  "pending_amount": 350000,
+  "items": [
+   {
+    "id": "6ae70a3c832b7e173e808aa4",
+    "name": "Foods & Households",
+    "group": "Foods & Households",
+    "icon": "shopping-basket",
+    "colour": "#E69F00",
+    "template": 3000000,
+    "status": "paid",
+    "paid_amount": 3000000,
+    "paid_day": "2026-11-06",
+    "day_of_cycle": 2
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa5",
+    "name": "Water Bill",
+    "group": "Utility Bills",
+    "icon": "droplets",
+    "colour": "#56B4E9",
+    "template": 200000,
+    "status": "pending",
+    "paid_amount": null,
+    "paid_day": null,
+    "day_of_cycle": null
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa6",
+    "name": "Electricity Bill",
+    "group": "Utility Bills",
+    "icon": "zap",
+    "colour": "#56B4E9",
+    "template": 200000,
+    "status": "paid",
+    "paid_amount": 285000,
+    "paid_day": "2026-11-10",
+    "day_of_cycle": 6
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa7",
+    "name": "Television",
+    "group": "Utility Bills",
+    "icon": "tv",
+    "colour": "#56B4E9",
+    "template": 100000,
+    "status": "pending",
+    "paid_amount": null,
+    "paid_day": null,
+    "day_of_cycle": null
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa8",
+    "name": "Mobile Internet",
+    "group": "Utility Bills",
+    "icon": "smartphone",
+    "colour": "#56B4E9",
+    "template": 50000,
+    "status": "pending",
+    "paid_amount": null,
+    "paid_day": null,
+    "day_of_cycle": null
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa9",
+    "name": "Broadband",
+    "group": "Utility Bills",
+    "icon": "wifi",
+    "colour": "#56B4E9",
+    "template": 140000,
+    "status": "paid",
+    "paid_amount": 140000,
+    "paid_day": "2026-11-08",
+    "day_of_cycle": 4
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aaa",
+    "name": "Claude Pro",
+    "group": "Subscriptions",
+    "icon": "sparkles",
+    "colour": "#CC79A7",
+    "template": 700000,
+    "status": "paid",
+    "paid_amount": 700000,
+    "paid_day": "2026-11-07",
+    "day_of_cycle": 3
+   }
+  ]
+ },
+ "trends": [
+  {
+   "id": "6ae70a3c832b7e173e808aa4",
+   "name": "Foods & Households",
+   "colour": "#E69F00",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 3000000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 3000000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 3000000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 3000000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 3000000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 3000000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": 3000000
+    }
+   ],
+   "avg6": 3000000,
+   "latest": 3000000,
+   "above_avg_pct": 0.0,
+   "flag": false
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa5",
+   "name": "Water Bill",
+   "colour": "#56B4E9",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 185000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 190000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 195000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 200000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 205000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 210000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": null
+    }
+   ],
+   "avg6": 197500,
+   "latest": 210000,
+   "above_avg_pct": 6.3,
+   "flag": false
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa6",
+   "name": "Electricity Bill",
+   "colour": "#56B4E9",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 190000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 205000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 220000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 235000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 250000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 265000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": 285000
+    }
+   ],
+   "avg6": 227500,
+   "latest": 285000,
+   "above_avg_pct": 25.3,
+   "flag": true
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa7",
+   "name": "Television",
+   "colour": "#56B4E9",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 100000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 100000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 100000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 100000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 100000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 100000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": null
+    }
+   ],
+   "avg6": 100000,
+   "latest": 100000,
+   "above_avg_pct": 0.0,
+   "flag": false
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa8",
+   "name": "Mobile Internet",
+   "colour": "#56B4E9",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 50000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 50000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 50000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 50000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 50000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 50000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": null
+    }
+   ],
+   "avg6": 50000,
+   "latest": 50000,
+   "above_avg_pct": 0.0,
+   "flag": false
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa9",
+   "name": "Broadband",
+   "colour": "#56B4E9",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 140000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 140000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 140000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 140000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 140000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 140000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": 140000
+    }
+   ],
+   "avg6": 140000,
+   "latest": 140000,
+   "above_avg_pct": 0.0,
+   "flag": false
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aaa",
+   "name": "Claude Pro",
+   "colour": "#CC79A7",
+   "points": [
+    {
+     "cycle": "2025-12",
+     "label": "Dec",
+     "amount": null
+    },
+    {
+     "cycle": "2026-01",
+     "label": "Jan",
+     "amount": null
+    },
+    {
+     "cycle": "2026-02",
+     "label": "Feb",
+     "amount": null
+    },
+    {
+     "cycle": "2026-03",
+     "label": "Mar",
+     "amount": null
+    },
+    {
+     "cycle": "2026-04",
+     "label": "Apr",
+     "amount": null
+    },
+    {
+     "cycle": "2026-05",
+     "label": "May",
+     "amount": 700000
+    },
+    {
+     "cycle": "2026-06",
+     "label": "Jun",
+     "amount": 700000
+    },
+    {
+     "cycle": "2026-07",
+     "label": "Jul",
+     "amount": 700000
+    },
+    {
+     "cycle": "2026-08",
+     "label": "Aug",
+     "amount": 700000
+    },
+    {
+     "cycle": "2026-09",
+     "label": "Sep",
+     "amount": 700000
+    },
+    {
+     "cycle": "2026-10",
+     "label": "Oct",
+     "amount": 700000
+    },
+    {
+     "cycle": "2026-11",
+     "label": "Nov",
+     "amount": 700000
+    }
+   ],
+   "avg6": 700000,
+   "latest": 700000,
+   "above_avg_pct": 0.0,
+   "flag": false
+  }
+ ],
+ "trend_takeaway": "Electricity Bill is 25% above its 6-cycle average.",
+ "fixed_ratio": {
+  "series": [
+   {
+    "cycle": "2025-12",
+    "label": "Dec",
+    "fixed": 0,
+    "income": 0,
+    "ratio": null
+   },
+   {
+    "cycle": "2026-01",
+    "label": "Jan",
+    "fixed": 0,
+    "income": 0,
+    "ratio": null
+   },
+   {
+    "cycle": "2026-02",
+    "label": "Feb",
+    "fixed": 0,
+    "income": 0,
+    "ratio": null
+   },
+   {
+    "cycle": "2026-03",
+    "label": "Mar",
+    "fixed": 0,
+    "income": 0,
+    "ratio": null
+   },
+   {
+    "cycle": "2026-04",
+    "label": "Apr",
+    "fixed": 0,
+    "income": 0,
+    "ratio": null
+   },
+   {
+    "cycle": "2026-05",
+    "label": "May",
+    "fixed": 4365000,
+    "income": 18500000,
+    "ratio": 23.6
+   },
+   {
+    "cycle": "2026-06",
+    "label": "Jun",
+    "fixed": 4385000,
+    "income": 18500000,
+    "ratio": 23.7
+   },
+   {
+    "cycle": "2026-07",
+    "label": "Jul",
+    "fixed": 4405000,
+    "income": 21300000,
+    "ratio": 20.7
+   },
+   {
+    "cycle": "2026-08",
+    "label": "Aug",
+    "fixed": 4425000,
+    "income": 18500000,
+    "ratio": 23.9
+   },
+   {
+    "cycle": "2026-09",
+    "label": "Sep",
+    "fixed": 4445000,
+    "income": 18500000,
+    "ratio": 24.0
+   },
+   {
+    "cycle": "2026-10",
+    "label": "Oct",
+    "fixed": 4465000,
+    "income": 21750000,
+    "ratio": 20.5
+   },
+   {
+    "cycle": "2026-11",
+    "label": "Nov",
+    "fixed": 4475000,
+    "income": 18500000,
+    "ratio": 24.2
+   }
+  ],
+  "target": 50.0,
+  "current": 24.2,
+  "takeaway": "Fixed costs take 24% of income (within the 50% target)."
+ },
+ "timing": [
+  {
+   "id": "6ae70a3c832b7e173e808aa4",
+   "name": "Foods & Households",
+   "avg_day": 2.9,
+   "samples": 7
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa5",
+   "name": "Water Bill",
+   "avg_day": 3.0,
+   "samples": 6
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa6",
+   "name": "Electricity Bill",
+   "avg_day": 3.4,
+   "samples": 7
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa7",
+   "name": "Television",
+   "avg_day": 3.0,
+   "samples": 6
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa8",
+   "name": "Mobile Internet",
+   "avg_day": 3.0,
+   "samples": 6
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa9",
+   "name": "Broadband",
+   "avg_day": 3.1,
+   "samples": 7
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aaa",
+   "name": "Claude Pro",
+   "avg_day": 3.0,
+   "samples": 7
+  }
+ ],
+ "annual": {
+  "items": [
+   {
+    "id": "6ae70a3c832b7e173e808aa4",
+    "name": "Foods & Households",
+    "colour": "#E69F00",
+    "monthly": 3000000,
+    "annual": 36000000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aaa",
+    "name": "Claude Pro",
+    "colour": "#CC79A7",
+    "monthly": 700000,
+    "annual": 8400000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa5",
+    "name": "Water Bill",
+    "colour": "#56B4E9",
+    "monthly": 200000,
+    "annual": 2400000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa6",
+    "name": "Electricity Bill",
+    "colour": "#56B4E9",
+    "monthly": 200000,
+    "annual": 2400000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa9",
+    "name": "Broadband",
+    "colour": "#56B4E9",
+    "monthly": 140000,
+    "annual": 1680000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa7",
+    "name": "Television",
+    "colour": "#56B4E9",
+    "monthly": 100000,
+    "annual": 1200000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808aa8",
+    "name": "Mobile Internet",
+    "colour": "#56B4E9",
+    "monthly": 50000,
+    "annual": 600000
+   }
+  ],
+  "total": 52680000,
+  "takeaway": "Foods & Households costs Rs 360,000/year."
+ },
+ "template_vs_actual": [
+  {
+   "id": "6ae70a3c832b7e173e808aa4",
+   "name": "Foods & Households",
+   "template": 3000000,
+   "actual": 3000000,
+   "avg_template": 3000000,
+   "avg_actual": 3000000
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa5",
+   "name": "Water Bill",
+   "template": 200000,
+   "actual": null,
+   "avg_template": 200000,
+   "avg_actual": 197500
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa6",
+   "name": "Electricity Bill",
+   "template": 200000,
+   "actual": 285000,
+   "avg_template": 200000,
+   "avg_actual": 227500
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa7",
+   "name": "Television",
+   "template": 100000,
+   "actual": null,
+   "avg_template": 100000,
+   "avg_actual": 100000
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa8",
+   "name": "Mobile Internet",
+   "template": 50000,
+   "actual": null,
+   "avg_template": 50000,
+   "avg_actual": 50000
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa9",
+   "name": "Broadband",
+   "template": 140000,
+   "actual": 140000,
+   "avg_template": 140000,
+   "avg_actual": 140000
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aaa",
+   "name": "Claude Pro",
+   "template": 700000,
+   "actual": 700000,
+   "avg_template": 700000,
+   "avg_actual": 700000
+  }
+ ]
+}

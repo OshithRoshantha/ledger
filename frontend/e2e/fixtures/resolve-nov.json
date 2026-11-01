@@ -1,0 +1,26 @@
+{
+ "label": "2026-11",
+ "display": "Nov 2026",
+ "short": "Nov",
+ "start_date": "2026-11-05",
+ "end_date": "2026-12-04",
+ "days": 30,
+ "salary_amount": 18500000,
+ "is_override": false,
+ "closed": false,
+ "is_current": true,
+ "salary_cycle": {
+  "label": "2026-11",
+  "display": "Nov 2026",
+  "short": "Nov",
+  "start_date": "2026-11-05",
+  "end_date": "2026-12-04",
+  "days": 30,
+  "salary_amount": 18500000,
+  "is_override": false,
+  "closed": false,
+  "is_current": true,
+  "offset_days": 7,
+  "can_override": true
+ }
+}

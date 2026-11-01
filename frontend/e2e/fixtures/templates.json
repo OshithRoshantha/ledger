@@ -1,0 +1,128 @@
+[
+ {
+  "id": "6ae70a3c832b7e173e808aa4",
+  "name": "Foods & Households",
+  "group": "Foods & Households",
+  "amount": 3000000,
+  "icon": "shopping-basket",
+  "colour": "#E69F00",
+  "sort_order": 0,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 3000000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808aa5",
+  "name": "Water Bill",
+  "group": "Utility Bills",
+  "amount": 200000,
+  "icon": "droplets",
+  "colour": "#56B4E9",
+  "sort_order": 1,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 200000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808aa6",
+  "name": "Electricity Bill",
+  "group": "Utility Bills",
+  "amount": 200000,
+  "icon": "zap",
+  "colour": "#56B4E9",
+  "sort_order": 2,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 200000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808aa7",
+  "name": "Television",
+  "group": "Utility Bills",
+  "amount": 100000,
+  "icon": "tv",
+  "colour": "#56B4E9",
+  "sort_order": 3,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 100000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808aa8",
+  "name": "Mobile Internet",
+  "group": "Utility Bills",
+  "amount": 50000,
+  "icon": "smartphone",
+  "colour": "#56B4E9",
+  "sort_order": 4,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 50000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808aa9",
+  "name": "Broadband",
+  "group": "Utility Bills",
+  "amount": 140000,
+  "icon": "wifi",
+  "colour": "#56B4E9",
+  "sort_order": 5,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 140000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808aaa",
+  "name": "Claude Pro",
+  "group": "Subscriptions",
+  "amount": 700000,
+  "icon": "sparkles",
+  "colour": "#CC79A7",
+  "sort_order": 6,
+  "is_active": true,
+  "archived_from_cycle": null,
+  "amount_history": [
+   {
+    "amount": 700000,
+    "effective_from_cycle": "2000-01"
+   }
+  ],
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ }
+]

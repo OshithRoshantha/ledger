@@ -1,0 +1,24 @@
+{
+ "cycle": "2026-11",
+ "cycle_display": "Nov 2026",
+ "is_current": true,
+ "amount": 500000,
+ "safe_before": 9484500,
+ "safe_after": 8984500,
+ "daily_before": 412400,
+ "daily_after": 390600,
+ "projected_balance_before": 4498100,
+ "projected_balance_after": 3998100,
+ "budgets": [
+  {
+   "name": "Restaurant",
+   "amount": 600000,
+   "before_pct": 85.0,
+   "after_pct": 168.3,
+   "state": "over",
+   "remaining_after": -410000
+  }
+ ],
+ "verdict": "yes",
+ "message": "Yes \u2014 you can afford this and still cover your bills."
+}

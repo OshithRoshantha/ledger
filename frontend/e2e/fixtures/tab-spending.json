@@ -1,0 +1,782 @@
+{
+ "meta": {
+  "cycle": "2026-11",
+  "label": "Nov 2026",
+  "start": "2026-11-05",
+  "end": "2026-12-04",
+  "is_current": true,
+  "is_future": false,
+  "is_override": false,
+  "day_index": 8,
+  "days_total": 30,
+  "days_left": 22,
+  "elapsed_pct": 27,
+  "prev_cycle": "2026-10",
+  "compare": {
+   "mode": "last",
+   "text": "vs Oct 2026, same day 8",
+   "name": "October",
+   "labels": [
+    "2026-10"
+   ]
+  },
+  "history_cycles": 6
+ },
+ "total": 6665500,
+ "income": 18500000,
+ "change": {
+  "current": 6665500,
+  "previous": 4968000,
+  "diff": 1697500,
+  "pct": 34.2,
+  "is_new": false,
+  "good": false
+ },
+ "takeaway": "Bank & Cash Spending drove 48% of your increase vs Oct 2026, same day 8.",
+ "categories": [
+  {
+   "key": "fixed:Foods & Households",
+   "name": "Foods & Households",
+   "colour": "#E69F00",
+   "icon": "shopping-basket",
+   "kind": "fixed",
+   "need_want": "need",
+   "amount": 3000000,
+   "count": null,
+   "compare_amount": 3000000,
+   "pct_of_spend": 45.0,
+   "pct_of_income": 16.2,
+   "change": {
+    "current": 3000000,
+    "previous": 3000000,
+    "diff": 0,
+    "pct": 0.0,
+    "is_new": false,
+    "good": null
+   },
+   "spark": [
+    3000000,
+    3000000,
+    3000000,
+    3000000,
+    3000000,
+    3000000
+   ],
+   "budget": null,
+   "budget_used_pct": null
+  },
+  {
+   "key": "var:6ae70a3c832b7e173e808aae",
+   "name": "Bank & Cash Spending",
+   "colour": "#D55E00",
+   "icon": "landmark",
+   "kind": "variable",
+   "id": "6ae70a3c832b7e173e808aae",
+   "archived": false,
+   "need_want": "want",
+   "unit": "transactions",
+   "amount": 2160000,
+   "count": 3,
+   "compare_amount": 280000,
+   "pct_of_spend": 32.4,
+   "pct_of_income": 11.7,
+   "change": {
+    "current": 2160000,
+    "previous": 280000,
+    "diff": 1880000,
+    "pct": 671.4,
+    "is_new": false,
+    "good": false
+   },
+   "spark": [
+    1220000,
+    1800000,
+    930000,
+    1460000,
+    2100000,
+    2160000
+   ],
+   "budget": null,
+   "budget_used_pct": null
+  },
+  {
+   "key": "fixed:Subscriptions",
+   "name": "Subscriptions",
+   "colour": "#CC79A7",
+   "icon": "sparkles",
+   "kind": "fixed",
+   "need_want": "need",
+   "amount": 700000,
+   "count": null,
+   "compare_amount": 700000,
+   "pct_of_spend": 10.5,
+   "pct_of_income": 3.8,
+   "change": {
+    "current": 700000,
+    "previous": 700000,
+    "diff": 0,
+    "pct": 0.0,
+    "is_new": false,
+    "good": null
+   },
+   "spark": [
+    700000,
+    700000,
+    700000,
+    700000,
+    700000,
+    700000
+   ],
+   "budget": null,
+   "budget_used_pct": null
+  },
+  {
+   "key": "fixed:Utility Bills",
+   "name": "Utility Bills",
+   "colour": "#56B4E9",
+   "icon": "droplets",
+   "kind": "fixed",
+   "need_want": "need",
+   "amount": 425000,
+   "count": null,
+   "compare_amount": 765000,
+   "pct_of_spend": 6.4,
+   "pct_of_income": 2.3,
+   "change": {
+    "current": 425000,
+    "previous": 765000,
+    "diff": -340000,
+    "pct": -44.4,
+    "is_new": false,
+    "good": true
+   },
+   "spark": [
+    685000,
+    705000,
+    725000,
+    745000,
+    765000,
+    425000
+   ],
+   "budget": null,
+   "budget_used_pct": null
+  },
+  {
+   "key": "var:6ae70a3c832b7e173e808aad",
+   "name": "Uber / PickMe",
+   "colour": "#0072B2",
+   "icon": "car",
+   "kind": "variable",
+   "id": "6ae70a3c832b7e173e808aad",
+   "archived": false,
+   "need_want": "want",
+   "unit": "rides",
+   "amount": 220500,
+   "count": 4,
+   "compare_amount": 123000,
+   "pct_of_spend": 3.3,
+   "pct_of_income": 1.2,
+   "change": {
+    "current": 220500,
+    "previous": 123000,
+    "diff": 97500,
+    "pct": 79.3,
+    "is_new": false,
+    "good": false
+   },
+   "spark": [
+    370000,
+    478000,
+    601000,
+    325000,
+    430000,
+    220500
+   ],
+   "budget": 400000,
+   "budget_used_pct": 55.1
+  },
+  {
+   "key": "var:6ae70a3c832b7e173e808aab",
+   "name": "Mobile Top-ups",
+   "colour": "#009E73",
+   "icon": "smartphone",
+   "kind": "variable",
+   "id": "6ae70a3c832b7e173e808aab",
+   "archived": false,
+   "need_want": "need",
+   "unit": "top-ups",
+   "amount": 100000,
+   "count": 1,
+   "compare_amount": 100000,
+   "pct_of_spend": 1.5,
+   "pct_of_income": 0.5,
+   "change": {
+    "current": 100000,
+    "previous": 100000,
+    "diff": 0,
+    "pct": 0.0,
+    "is_new": false,
+    "good": null
+   },
+   "spark": [
+    100000,
+    100000,
+    100000,
+    100000,
+    100000,
+    100000
+   ],
+   "budget": null,
+   "budget_used_pct": null
+  },
+  {
+   "key": "var:6ae70a3c832b7e173e808aac",
+   "name": "LMT Top-ups",
+   "colour": "#F0E442",
+   "icon": "ticket",
+   "kind": "variable",
+   "id": "6ae70a3c832b7e173e808aac",
+   "archived": false,
+   "need_want": "need",
+   "unit": "top-ups",
+   "amount": 60000,
+   "count": 1,
+   "compare_amount": 0,
+   "pct_of_spend": 0.9,
+   "pct_of_income": 0.3,
+   "change": {
+    "current": 60000,
+    "previous": 0,
+    "diff": 60000,
+    "pct": null,
+    "is_new": true,
+    "good": false
+   },
+   "spark": [
+    60000,
+    70000,
+    80000,
+    90000,
+    100000,
+    60000
+   ],
+   "budget": 150000,
+   "budget_used_pct": 40.0
+  }
+ ],
+ "bank": {
+  "total": 2160000,
+  "change": {
+   "current": 2160000,
+   "previous": 280000,
+   "diff": 1880000,
+   "pct": 671.4,
+   "is_new": false,
+   "good": false
+  },
+  "reasons": [
+   {
+    "id": "6ae70a3c832b7e173e808aaf",
+    "name": "Shopping",
+    "colour": "#8B5CF6",
+    "icon": "shopping-bag",
+    "amount": 1500000,
+    "count": 1,
+    "pct": 69.4,
+    "change": {
+     "current": 1500000,
+     "previous": 280000,
+     "diff": 1220000,
+     "pct": 435.7,
+     "is_new": false,
+     "good": false
+    },
+    "budget": 1200000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808ab1",
+    "name": "Restaurant",
+    "colour": "#F43F5E",
+    "icon": "utensils",
+    "amount": 510000,
+    "count": 1,
+    "pct": 23.6,
+    "change": {
+     "current": 510000,
+     "previous": 0,
+     "diff": 510000,
+     "pct": null,
+     "is_new": true,
+     "good": false
+    },
+    "budget": 600000
+   },
+   {
+    "id": "6ae70a3c832b7e173e808ab6",
+    "name": "Family",
+    "colour": "#3B82F6",
+    "icon": "users",
+    "amount": 150000,
+    "count": 1,
+    "pct": 6.9,
+    "change": {
+     "current": 150000,
+     "previous": 0,
+     "diff": 150000,
+     "pct": null,
+     "is_new": true,
+     "good": false
+    },
+    "budget": null
+   }
+  ],
+  "methods": [
+   {
+    "method": "atm",
+    "label": "ATM",
+    "amount": 1500000,
+    "count": 1,
+    "avg": 1500000,
+    "pct": 69.4,
+    "change": {
+     "current": 1500000,
+     "previous": 0,
+     "diff": 1500000,
+     "pct": null,
+     "is_new": true,
+     "good": false
+    }
+   },
+   {
+    "method": "bank_transfer",
+    "label": "Transfer",
+    "amount": 150000,
+    "count": 1,
+    "avg": 150000,
+    "pct": 6.9,
+    "change": {
+     "current": 150000,
+     "previous": 0,
+     "diff": 150000,
+     "pct": null,
+     "is_new": true,
+     "good": false
+    }
+   },
+   {
+    "method": "card",
+    "label": "Card",
+    "amount": 510000,
+    "count": 1,
+    "avg": 510000,
+    "pct": 23.6,
+    "change": {
+     "current": 510000,
+     "previous": 280000,
+     "diff": 230000,
+     "pct": 82.1,
+     "is_new": false,
+     "good": false
+    }
+   }
+  ],
+  "matrix": {
+   "reasons": [
+    "Shopping",
+    "Restaurant",
+    "Family"
+   ],
+   "methods": [
+    "ATM",
+    "Transfer",
+    "Card"
+   ],
+   "cells": [
+    [
+     1500000,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     510000
+    ],
+    [
+     0,
+     150000,
+     0
+    ]
+   ]
+  },
+  "count": 3
+ },
+ "movers": {
+  "up": [
+   {
+    "name": "Bank & Cash Spending",
+    "diff": 1880000,
+    "pct": 671.4,
+    "is_new": false,
+    "link": "/spending/6ae70a3c832b7e173e808aae"
+   },
+   {
+    "name": "Bank: Shopping",
+    "diff": 1220000,
+    "pct": 435.7,
+    "is_new": false,
+    "link": "/spending"
+   },
+   {
+    "name": "Bank: Restaurant",
+    "diff": 510000,
+    "pct": null,
+    "is_new": true,
+    "link": "/spending"
+   }
+  ],
+  "down": [
+   {
+    "name": "Utility Bills",
+    "diff": -340000,
+    "pct": -44.4,
+    "is_new": false,
+    "link": "/bills"
+   }
+  ]
+ },
+ "patterns": {
+  "weekday": [
+   {
+    "dow": "Mon",
+    "avg": 39500,
+    "total": 39500
+   },
+   {
+    "dow": "Tue",
+    "avg": 150000,
+    "total": 150000
+   },
+   {
+    "dow": "Wed",
+    "avg": 60000,
+    "total": 60000
+   },
+   {
+    "dow": "Thu",
+    "avg": 60000,
+    "total": 120000
+   },
+   {
+    "dow": "Fri",
+    "avg": 100000,
+    "total": 100000
+   },
+   {
+    "dow": "Sat",
+    "avg": 571000,
+    "total": 571000
+   },
+   {
+    "dow": "Sun",
+    "avg": 1500000,
+    "total": 1500000
+   }
+  ],
+  "takeaway": "You spend 9.2\u00d7 more on Suns than other days.",
+  "weekday_vs_weekend": {
+   "weekday": 469500,
+   "weekend": 2071000,
+   "weekday_daily": 78200,
+   "weekend_daily": 1035500
+  },
+  "halves": {
+   "first": 2540500,
+   "second": 0,
+   "split_day": "2026-11-20"
+  }
+ },
+ "heat": [
+  {
+   "day": "2026-11-05",
+   "amount": 48000
+  },
+  {
+   "day": "2026-11-06",
+   "amount": 3100000
+  },
+  {
+   "day": "2026-11-07",
+   "amount": 1271000
+  },
+  {
+   "day": "2026-11-08",
+   "amount": 1640000
+  },
+  {
+   "day": "2026-11-09",
+   "amount": 39500
+  },
+  {
+   "day": "2026-11-10",
+   "amount": 435000
+  },
+  {
+   "day": "2026-11-11",
+   "amount": 60000
+  },
+  {
+   "day": "2026-11-12",
+   "amount": 72000
+  },
+  {
+   "day": "2026-11-13",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-14",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-15",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-16",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-17",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-18",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-19",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-20",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-21",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-22",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-23",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-24",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-25",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-26",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-27",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-28",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-29",
+   "amount": 0
+  },
+  {
+   "day": "2026-11-30",
+   "amount": 0
+  },
+  {
+   "day": "2026-12-01",
+   "amount": 0
+  },
+  {
+   "day": "2026-12-02",
+   "amount": 0
+  },
+  {
+   "day": "2026-12-03",
+   "amount": 0
+  },
+  {
+   "day": "2026-12-04",
+   "amount": 0
+  }
+ ],
+ "sizes": [
+  {
+   "label": "Small",
+   "min": 0,
+   "max": 100000,
+   "count": 5,
+   "total": 280500
+  },
+  {
+   "label": "Medium",
+   "min": 100000,
+   "max": 500000,
+   "count": 2,
+   "total": 250000
+  },
+  {
+   "label": "Large",
+   "min": 500000,
+   "max": 2000000,
+   "count": 2,
+   "total": 2010000
+  },
+  {
+   "label": "Very large",
+   "min": 2000000,
+   "max": null,
+   "count": 0,
+   "total": 0
+  }
+ ],
+ "top10": [
+  {
+   "id": "6ae70a3d832b7e173e808b4e",
+   "amount": 1500000,
+   "day": "2026-11-08",
+   "category": "Bank & Cash Spending",
+   "colour": "#D55E00",
+   "reason": "Shopping",
+   "method": "atm",
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b4d",
+   "amount": 510000,
+   "day": "2026-11-07",
+   "category": "Bank & Cash Spending",
+   "colour": "#D55E00",
+   "reason": "Restaurant",
+   "method": "card",
+   "note": "Birthday dinner",
+   "category_id": "6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b4f",
+   "amount": 150000,
+   "day": "2026-11-10",
+   "category": "Bank & Cash Spending",
+   "colour": "#D55E00",
+   "reason": "Family",
+   "method": "bank_transfer",
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b50",
+   "amount": 100000,
+   "day": "2026-11-06",
+   "category": "Mobile Top-ups",
+   "colour": "#009E73",
+   "reason": null,
+   "method": null,
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aab"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b4c",
+   "amount": 72000,
+   "day": "2026-11-12",
+   "category": "Uber / PickMe",
+   "colour": "#0072B2",
+   "reason": null,
+   "method": null,
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aad"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b4a",
+   "amount": 61000,
+   "day": "2026-11-07",
+   "category": "Uber / PickMe",
+   "colour": "#0072B2",
+   "reason": null,
+   "method": null,
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aad"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b51",
+   "amount": 60000,
+   "day": "2026-11-11",
+   "category": "LMT Top-ups",
+   "colour": "#F0E442",
+   "reason": null,
+   "method": null,
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aac"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b49",
+   "amount": 48000,
+   "day": "2026-11-05",
+   "category": "Uber / PickMe",
+   "colour": "#0072B2",
+   "reason": null,
+   "method": null,
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aad"
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b4b",
+   "amount": 39500,
+   "day": "2026-11-09",
+   "category": "Uber / PickMe",
+   "colour": "#0072B2",
+   "reason": null,
+   "method": null,
+   "note": "",
+   "category_id": "6ae70a3c832b7e173e808aad"
+  }
+ ],
+ "frequency": [
+  {
+   "name": "Mobile Top-ups",
+   "unit": "top-ups",
+   "count": 1,
+   "avg": 100000,
+   "total": 100000
+  },
+  {
+   "name": "LMT Top-ups",
+   "unit": "top-ups",
+   "count": 1,
+   "avg": 60000,
+   "total": 60000
+  },
+  {
+   "name": "Uber / PickMe",
+   "unit": "rides",
+   "count": 4,
+   "avg": 55100,
+   "total": 220500
+  },
+  {
+   "name": "ATM withdrawals",
+   "unit": "withdrawals",
+   "count": 1,
+   "avg": 1500000,
+   "total": 1500000
+  }
+ ]
+}

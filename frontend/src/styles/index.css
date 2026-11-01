@@ -1,0 +1,160 @@
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    /* the page itself never scrolls: only the main pane does, so the tab bar can't rubber-band */
+    overflow: hidden;
+    overscroll-behavior: none;
+    position: fixed;
+    inset: 0;
+  }
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  /* >= 16px prevents iOS zoom on focus */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+  button {
+    touch-action: manipulation;
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+  .card {
+    background-color: var(--surface);
+    background-image: var(--card-gradient);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+  }
+  .card-elevated {
+    background-color: var(--elevated);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+  }
+  .hairline-b {
+    border-bottom: 1px solid var(--hairline);
+  }
+  .safe-top {
+    padding-top: max(var(--safe-top), 0px);
+  }
+  .safe-bottom {
+    padding-bottom: max(var(--safe-bottom), 0px);
+  }
+  .scroll-pane {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scroll-pane::-webkit-scrollbar {
+    display: none;
+  }
+  .header-bg {
+    background: var(--bg);
+  }
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    .header-bg {
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+    }
+  }
+  .tap {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .label {
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  .shake {
+    animation: shake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(3px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-6px);
+  }
+  40%,
+  60% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--elevated) 0px, var(--hairline-strong) 80px, var(--elevated) 160px);
+  background-size: 200px 100%;
+  animation: skeleton 1.3s ease-in-out infinite;
+  border-radius: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

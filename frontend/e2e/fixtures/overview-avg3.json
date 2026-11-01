@@ -1,0 +1,498 @@
+{
+ "meta": {
+  "cycle": "2026-11",
+  "label": "Nov 2026",
+  "start": "2026-11-05",
+  "end": "2026-12-04",
+  "is_current": true,
+  "is_future": false,
+  "is_override": false,
+  "day_index": 8,
+  "days_total": 30,
+  "days_left": 22,
+  "elapsed_pct": 27,
+  "prev_cycle": "2026-10",
+  "compare": {
+   "mode": "avg3",
+   "text": "vs 3-cycle avg (Aug\u2013Oct 2026), day 8",
+   "name": "your 3-cycle average",
+   "labels": [
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ]
+  },
+  "history_cycles": 6
+ },
+ "hero": {
+  "safe_to_spend": 9484500,
+  "balance": 11834500,
+  "committed": 350000,
+  "reserved": 2000000,
+  "income": 18500000,
+  "spent": 6665500,
+  "daily_allowance": 412400,
+  "days_remaining": 23,
+  "status": "ok",
+  "elapsed_pct": 27,
+  "income_spent_pct": 36.0,
+  "pace_warning": false
+ },
+ "health": {
+  "score": 42,
+  "components": [
+   {
+    "key": "savings",
+    "label": "Savings rate",
+    "weight": 30,
+    "score": 81,
+    "detail": "24% projected"
+   },
+   {
+    "key": "bills",
+    "label": "Bills paid on time",
+    "weight": 20,
+    "score": 89,
+    "detail": "4 of 7 paid"
+   },
+   {
+    "key": "pace",
+    "label": "Spending pace",
+    "weight": 20,
+    "score": 0,
+    "detail": "445% of usual pace"
+   },
+   {
+    "key": "variable",
+    "label": "Variable vs 3-cycle avg",
+    "weight": 15,
+    "score": 0,
+    "detail": "445% of average"
+   },
+   {
+    "key": "budgets",
+    "label": "Budget adherence",
+    "weight": 15,
+    "score": 0,
+    "detail": "0 of 4 on track"
+   }
+  ],
+  "top_factor": "Spending pace (\u221266)",
+  "prev_score": 79,
+  "delta": -37
+ },
+ "kpis": [
+  {
+   "key": "income",
+   "label": "Income",
+   "value": 18500000,
+   "format": "money",
+   "change": {
+    "current": 18500000,
+    "previous": 18500000,
+    "diff": 0,
+    "pct": 0.0,
+    "is_new": false,
+    "good": null
+   },
+   "spark": [
+    18500000,
+    21300000,
+    18500000,
+    18500000,
+    21750000,
+    18500000
+   ],
+   "good": "up"
+  },
+  {
+   "key": "spent",
+   "label": "Total spent",
+   "value": 6665500,
+   "format": "money",
+   "change": {
+    "current": 6665500,
+    "previous": 4922000,
+    "diff": 1743500,
+    "pct": 35.4,
+    "is_new": false,
+    "good": false
+   },
+   "spark": [
+    6135000,
+    6853000,
+    6136000,
+    6420000,
+    7195000,
+    6665500
+   ],
+   "good": "down"
+  },
+  {
+   "key": "balance",
+   "label": "Balance",
+   "value": 11834500,
+   "format": "money",
+   "change": {
+    "current": 11834500,
+    "previous": 13578000,
+    "diff": -1743500,
+    "pct": -12.8,
+    "is_new": false,
+    "good": false
+   },
+   "spark": [
+    12365000,
+    14447000,
+    12364000,
+    12080000,
+    14555000,
+    11834500
+   ],
+   "good": "up"
+  },
+  {
+   "key": "savings_rate",
+   "label": "Savings rate",
+   "value": 64.0,
+   "format": "pct",
+   "change": {
+    "diff_pts": -9.4,
+    "good": false
+   },
+   "spark": [
+    67,
+    68,
+    67,
+    65,
+    67,
+    64
+   ],
+   "good": "up"
+  },
+  {
+   "key": "avg_daily",
+   "label": "Avg daily spend",
+   "value": 833200,
+   "format": "money",
+   "change": {
+    "current": 833200,
+    "previous": 615200,
+    "diff": 218000,
+    "pct": 35.4,
+    "is_new": false,
+    "good": false
+   },
+   "spark": [
+    204500,
+    221100,
+    197900,
+    214000,
+    232100,
+    833200
+   ],
+   "good": "down"
+  },
+  {
+   "key": "projected_balance",
+   "label": "Projected end balance",
+   "value": 4498100,
+   "format": "money",
+   "change": {
+    "current": 4498100,
+    "previous": 13578000,
+    "diff": -9079900,
+    "pct": -66.9,
+    "is_new": false,
+    "good": false
+   },
+   "spark": [
+    12365000,
+    14447000,
+    12364000,
+    12080000,
+    14555000,
+    11834500
+   ],
+   "good": "up"
+  },
+  {
+   "key": "pending_bills",
+   "label": "Pending bills",
+   "value": 350000,
+   "format": "money",
+   "count": 3,
+   "change": null,
+   "spark": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "good": "down"
+  },
+  {
+   "key": "biggest",
+   "label": "Biggest category",
+   "value": 3000000,
+   "format": "money",
+   "name": "Foods & Households",
+   "change": {
+    "current": 3000000,
+    "previous": 3000000,
+    "diff": 0,
+    "pct": 0.0,
+    "is_new": false,
+    "good": null
+   },
+   "spark": [
+    3000000,
+    3000000,
+    3000000,
+    3000000,
+    3000000,
+    3000000
+   ],
+   "good": "down"
+  }
+ ],
+ "waterfall": {
+  "steps": [
+   {
+    "label": "Salary",
+    "amount": 18500000,
+    "kind": "add"
+   },
+   {
+    "label": "Fixed bills",
+    "amount": -4125000,
+    "kind": "sub",
+    "key": "fixed"
+   },
+   {
+    "label": "Mobile Top-ups",
+    "amount": -100000,
+    "kind": "sub",
+    "colour": "#009E73",
+    "key": "var:6ae70a3c832b7e173e808aab"
+   },
+   {
+    "label": "LMT Top-ups",
+    "amount": -60000,
+    "kind": "sub",
+    "colour": "#F0E442",
+    "key": "var:6ae70a3c832b7e173e808aac"
+   },
+   {
+    "label": "Uber / PickMe",
+    "amount": -220500,
+    "kind": "sub",
+    "colour": "#0072B2",
+    "key": "var:6ae70a3c832b7e173e808aad"
+   },
+   {
+    "label": "Bank: Shopping",
+    "amount": -1500000,
+    "kind": "sub",
+    "key": "reason:6ae70a3c832b7e173e808aaf",
+    "colour": "#8B5CF6"
+   },
+   {
+    "label": "Bank: Restaurant",
+    "amount": -510000,
+    "kind": "sub",
+    "key": "reason:6ae70a3c832b7e173e808ab1",
+    "colour": "#F43F5E"
+   },
+   {
+    "label": "Bank: Family",
+    "amount": -150000,
+    "kind": "sub",
+    "key": "reason:6ae70a3c832b7e173e808ab6",
+    "colour": "#3B82F6"
+   },
+   {
+    "label": "Remaining",
+    "amount": 11834500,
+    "kind": "total"
+   }
+  ],
+  "income": 18500000,
+  "spent": 6665500,
+  "remaining": 11834500,
+  "takeaway": "Fixed bills took the biggest share of your income (22%)."
+ },
+ "alerts": [
+  {
+   "id": "overspend:Shopping is over budget by Rs 3,000",
+   "type": "overspend",
+   "severity": "high",
+   "title": "Shopping is over budget by Rs 3,000",
+   "detail": "Rs 15,000 spent of a Rs 12,000 budget.",
+   "metric": "reason:6ae70a3c832b7e173e808aaf",
+   "delta_pct": 25.0,
+   "delta_abs": 300000,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "overspend:Restaurant is on track to exceed its budget",
+   "type": "overspend",
+   "severity": "medium",
+   "title": "Restaurant is on track to exceed its budget",
+   "detail": "Projected Rs 19,125 against Rs 6,000.",
+   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "delta_pct": 218.8,
+   "delta_abs": 1312500,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "trend:Bank & Cash Spending is up 3 cycles in a row (+126%)",
+   "type": "trend",
+   "severity": "medium",
+   "title": "Bank & Cash Spending is up 3 cycles in a row (+126%)",
+   "detail": "Rs 9,300 \u2192 Rs 14,600 \u2192 Rs 21,000.",
+   "metric": "var:6ae70a3c832b7e173e808aae",
+   "delta_pct": 125.8,
+   "delta_abs": 1170000,
+   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "anomaly:6ae70a3d832b7e173e808b4e",
+   "type": "anomaly",
+   "severity": "medium",
+   "title": "Unusual: Rs 15,000 ATM withdrawal (3.9\u00d7 your average)",
+   "detail": "Bank & Cash Spending entries usually average Rs 3,875.",
+   "metric": "var:6ae70a3c832b7e173e808aae:atm",
+   "delta_pct": 287.1,
+   "delta_abs": 1112500,
+   "action_link": "/spending/6ae70a3c832b7e173e808aae:atm"
+  },
+  {
+   "id": "budget_warning:Restaurant is 85% of its budget with 22 days left",
+   "type": "budget_warning",
+   "severity": "medium",
+   "title": "Restaurant is 85% of its budget with 22 days left",
+   "detail": "Rs 900 left of Rs 6,000.",
+   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "delta_pct": 85.0,
+   "delta_abs": 510000,
+   "action_link": "/?tab=spending"
+  }
+ ],
+ "insights": [
+  {
+   "id": "overspend:Shopping is over budget by Rs 3,000",
+   "type": "overspend",
+   "severity": "high",
+   "title": "Shopping is over budget by Rs 3,000",
+   "detail": "Rs 15,000 spent of a Rs 12,000 budget.",
+   "metric": "reason:6ae70a3c832b7e173e808aaf",
+   "delta_pct": 25.0,
+   "delta_abs": 300000,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "overspend:Restaurant is on track to exceed its budget",
+   "type": "overspend",
+   "severity": "medium",
+   "title": "Restaurant is on track to exceed its budget",
+   "detail": "Projected Rs 19,125 against Rs 6,000.",
+   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "delta_pct": 218.8,
+   "delta_abs": 1312500,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "trend:Bank & Cash Spending is up 3 cycles in a row (+126%)",
+   "type": "trend",
+   "severity": "medium",
+   "title": "Bank & Cash Spending is up 3 cycles in a row (+126%)",
+   "detail": "Rs 9,300 \u2192 Rs 14,600 \u2192 Rs 21,000.",
+   "metric": "var:6ae70a3c832b7e173e808aae",
+   "delta_pct": 125.8,
+   "delta_abs": 1170000,
+   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "anomaly:6ae70a3d832b7e173e808b4e",
+   "type": "anomaly",
+   "severity": "medium",
+   "title": "Unusual: Rs 15,000 ATM withdrawal (3.9\u00d7 your average)",
+   "detail": "Bank & Cash Spending entries usually average Rs 3,875.",
+   "metric": "var:6ae70a3c832b7e173e808aae:atm",
+   "delta_pct": 287.1,
+   "delta_abs": 1112500,
+   "action_link": "/spending/6ae70a3c832b7e173e808aae:atm"
+  },
+  {
+   "id": "budget_warning:Restaurant is 85% of its budget with 22 days left",
+   "type": "budget_warning",
+   "severity": "medium",
+   "title": "Restaurant is 85% of its budget with 22 days left",
+   "detail": "Rs 900 left of Rs 6,000.",
+   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "delta_pct": 85.0,
+   "delta_abs": 510000,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "overspend:Uber / PickMe is on track to exceed its budget",
+   "type": "overspend",
+   "severity": "medium",
+   "title": "Uber / PickMe is on track to exceed its budget",
+   "detail": "Projected Rs 8,269 against Rs 4,000.",
+   "metric": "var:6ae70a3c832b7e173e808aad",
+   "delta_pct": 106.7,
+   "delta_abs": 426900,
+   "action_link": "/spending/6ae70a3c832b7e173e808aad"
+  },
+  {
+   "id": "bill_increase:Electricity Bill paid Rs 850 above usual",
+   "type": "bill_increase",
+   "severity": "medium",
+   "title": "Electricity Bill paid Rs 850 above usual",
+   "detail": "Paid Rs 2,850; the usual amount is Rs 2,000.",
+   "metric": "6ae70a3c832b7e173e808aa6",
+   "delta_pct": 42.5,
+   "delta_abs": 85000,
+   "action_link": "/bills"
+  },
+  {
+   "id": "goal_progress:'Emergency fund' is on track",
+   "type": "goal_progress",
+   "severity": "positive",
+   "title": "'Emergency fund' is on track",
+   "detail": "Needs Rs 34,545/cycle; you save about Rs 129,997.",
+   "metric": "Emergency fund",
+   "delta_pct": 24.0,
+   "delta_abs": 12000000,
+   "action_link": "/?tab=plan"
+  }
+ ],
+ "pending_bills": [
+  {
+   "id": "6ae70a3c832b7e173e808aa5",
+   "name": "Water Bill",
+   "amount": 200000,
+   "icon": "droplets",
+   "colour": "#56B4E9"
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa7",
+   "name": "Television",
+   "amount": 100000,
+   "icon": "tv",
+   "colour": "#56B4E9"
+  },
+  {
+   "id": "6ae70a3c832b7e173e808aa8",
+   "name": "Mobile Internet",
+   "amount": 50000,
+   "icon": "smartphone",
+   "colour": "#56B4E9"
+  }
+ ],
+ "takeaway": "You can spend Rs 4,124/day for 23 more days."
+}

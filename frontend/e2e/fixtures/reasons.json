@@ -1,0 +1,102 @@
+[
+ {
+  "id": "6ae70a3c832b7e173e808aaf",
+  "name": "Shopping",
+  "icon": "shopping-bag",
+  "colour": "#8B5CF6",
+  "need_want": "want",
+  "is_active": true,
+  "sort_order": 0,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab0",
+  "name": "Day Out",
+  "icon": "sun",
+  "colour": "#F59E0B",
+  "need_want": "want",
+  "is_active": true,
+  "sort_order": 1,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab1",
+  "name": "Restaurant",
+  "icon": "utensils",
+  "colour": "#F43F5E",
+  "need_want": "want",
+  "is_active": true,
+  "sort_order": 2,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab2",
+  "name": "Medical",
+  "icon": "heart-pulse",
+  "colour": "#14B8A6",
+  "need_want": "need",
+  "is_active": true,
+  "sort_order": 3,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab3",
+  "name": "Groceries (extra)",
+  "icon": "shopping-cart",
+  "colour": "#84CC16",
+  "need_want": "need",
+  "is_active": true,
+  "sort_order": 4,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab4",
+  "name": "Fuel",
+  "icon": "fuel",
+  "colour": "#64748B",
+  "need_want": "need",
+  "is_active": true,
+  "sort_order": 5,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab5",
+  "name": "Gifts",
+  "icon": "gift",
+  "colour": "#EC4899",
+  "need_want": "want",
+  "is_active": true,
+  "sort_order": 6,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab6",
+  "name": "Family",
+  "icon": "users",
+  "colour": "#3B82F6",
+  "need_want": "need",
+  "is_active": true,
+  "sort_order": 7,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab7",
+  "name": "Education",
+  "icon": "graduation-cap",
+  "colour": "#06B6D4",
+  "need_want": "need",
+  "is_active": true,
+  "sort_order": 8,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ },
+ {
+  "id": "6ae70a3c832b7e173e808ab8",
+  "name": "Other",
+  "icon": "tag",
+  "colour": "#9AA3B2",
+  "need_want": "want",
+  "is_active": true,
+  "sort_order": 9,
+  "created_at": "2026-11-01T09:45:32.674000+00:00"
+ }
+]

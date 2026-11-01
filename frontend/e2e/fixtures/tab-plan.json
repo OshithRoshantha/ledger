@@ -1,0 +1,296 @@
+{
+ "meta": {
+  "cycle": "2026-11",
+  "label": "Nov 2026",
+  "start": "2026-11-05",
+  "end": "2026-12-04",
+  "is_current": true,
+  "is_future": false,
+  "is_override": false,
+  "day_index": 8,
+  "days_total": 30,
+  "days_left": 22,
+  "elapsed_pct": 27,
+  "prev_cycle": "2026-10",
+  "compare": {
+   "mode": "avg3",
+   "text": "vs 3-cycle avg (Aug\u2013Oct 2026), day 8",
+   "name": "your 3-cycle average",
+   "labels": [
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ]
+  },
+  "history_cycles": 6
+ },
+ "budgets": [
+  {
+   "id": "6ae70a3d832b7e173e808b55",
+   "target_type": "reason",
+   "target_id": "6ae70a3c832b7e173e808aaf",
+   "key": "reason:6ae70a3c832b7e173e808aaf",
+   "name": "Shopping",
+   "colour": "#8B5CF6",
+   "icon": "shopping-bag",
+   "amount": 1200000,
+   "spent": 1500000,
+   "remaining": -300000,
+   "pct": 125.0,
+   "pace_pct": 27,
+   "state": "over",
+   "projected": 5625000
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b54",
+   "target_type": "reason",
+   "target_id": "6ae70a3c832b7e173e808ab1",
+   "key": "reason:6ae70a3c832b7e173e808ab1",
+   "name": "Restaurant",
+   "colour": "#F43F5E",
+   "icon": "utensils",
+   "amount": 600000,
+   "spent": 510000,
+   "remaining": 90000,
+   "pct": 85.0,
+   "pace_pct": 27,
+   "state": "near",
+   "projected": 1912500
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b52",
+   "target_type": "category",
+   "target_id": "6ae70a3c832b7e173e808aad",
+   "key": "var:6ae70a3c832b7e173e808aad",
+   "name": "Uber / PickMe",
+   "colour": "#0072B2",
+   "icon": "car",
+   "amount": 400000,
+   "spent": 220500,
+   "remaining": 179500,
+   "pct": 55.1,
+   "pace_pct": 27,
+   "state": "ok",
+   "projected": 826900
+  },
+  {
+   "id": "6ae70a3d832b7e173e808b53",
+   "target_type": "category",
+   "target_id": "6ae70a3c832b7e173e808aac",
+   "key": "var:6ae70a3c832b7e173e808aac",
+   "name": "LMT Top-ups",
+   "colour": "#F0E442",
+   "icon": "ticket",
+   "amount": 150000,
+   "spent": 60000,
+   "remaining": 90000,
+   "pct": 40.0,
+   "pace_pct": 27,
+   "state": "ok",
+   "projected": 225000
+  }
+ ],
+ "budget_takeaway": "Shopping is over budget.",
+ "forecast": {
+  "days": 30,
+  "actual": [
+   48000,
+   3148000,
+   4419000,
+   6059000,
+   6098500,
+   6533500,
+   6593500,
+   6665500
+  ],
+  "low": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   6665500,
+   7085200,
+   7155000,
+   7224700,
+   7294500,
+   7364200,
+   7433900,
+   7503700,
+   7573400,
+   7643200,
+   7712900,
+   7782600,
+   7852400,
+   7922100,
+   7991800,
+   8061600,
+   8131300,
+   8201100,
+   8270800,
+   8340500,
+   8410300,
+   8480000,
+   8549800
+  ],
+  "likely": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   6665500,
+   7209200,
+   7402800,
+   7596500,
+   7790100,
+   7983800,
+   8177400,
+   8371100,
+   8564700,
+   8758400,
+   8952000,
+   9145700,
+   9339300,
+   9533000,
+   9726600,
+   9920300,
+   10113900,
+   10307600,
+   10501200,
+   10694900,
+   10888500,
+   11082200,
+   11275800
+  ],
+  "high": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   6665500,
+   7380700,
+   7745900,
+   8111100,
+   8476300,
+   8841500,
+   9206700,
+   9571900,
+   9937100,
+   10302300,
+   10667500,
+   11032700,
+   11397900,
+   11763100,
+   12128300,
+   12493500,
+   12858600,
+   13223800,
+   13589000,
+   13954200,
+   14319400,
+   14684600,
+   15049800
+  ],
+  "end_spend": {
+   "low": 8549800,
+   "likely": 11275800,
+   "high": 15049800
+  },
+  "end_balance": {
+   "low": 9950200,
+   "likely": 7224200,
+   "high": 3450200
+  },
+  "so_far": 6665500,
+  "pending_bills": 350000,
+  "income": 18500000,
+  "takeaway": "Likely end-of-cycle balance: Rs 72,242 (range Rs 34,502 to Rs 99,502)."
+ },
+ "goals": [
+  {
+   "id": "6ae70a3d832b7e173e808b56",
+   "name": "Emergency fund",
+   "target_amount": 50000000,
+   "target_date": "2027-10-01",
+   "saved_amount": 12000000,
+   "monthly_reserve": 2000000,
+   "progress_pct": 24.0,
+   "required_per_cycle": 3454546,
+   "avg_savings": 12999667,
+   "on_track": true,
+   "eta_cycles": 3
+  }
+ ],
+ "recommendations": [
+  {
+   "id": "cut:var:6ae70a3c832b7e173e808aae",
+   "kind": "cut",
+   "title": "Cutting Bank & Cash Spending back to your 3-cycle average saves Rs 66,033/cycle",
+   "amount": 6603333,
+   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "cut:reason:6ae70a3c832b7e173e808aaf",
+   "kind": "cut",
+   "title": "Cutting Shopping back to your 3-cycle average saves Rs 53,650/cycle",
+   "amount": 5365000,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "cut:reason:6ae70a3c832b7e173e808ab1",
+   "kind": "cut",
+   "title": "Cutting Restaurant back to your 3-cycle average saves Rs 15,825/cycle",
+   "amount": 1582500,
+   "action_link": "/?tab=spending"
+  },
+  {
+   "id": "rec:trend:Bank & Cash Spending is up 3 cycles in a row (+126%)",
+   "kind": "trend",
+   "title": "Bank & Cash Spending is up 3 cycles in a row (+126%)",
+   "amount": 1170000,
+   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+  },
+  {
+   "id": "cut:reason:6ae70a3c832b7e173e808ab6",
+   "kind": "cut",
+   "title": "Cutting Family back to your 3-cycle average saves Rs 5,625/cycle",
+   "amount": 562500,
+   "action_link": "/?tab=spending"
+  }
+ ],
+ "fifty": {
+  "income": 18500000,
+  "projected": true,
+  "buckets": [
+   {
+    "key": "needs",
+    "amount": 5637500,
+    "pct": 30.5,
+    "target": 50,
+    "status": "ok"
+   },
+   {
+    "key": "wants",
+    "amount": 8364400,
+    "pct": 45.2,
+    "target": 30,
+    "status": "off"
+   },
+   {
+    "key": "savings",
+    "amount": 4498100,
+    "pct": 24.3,
+    "target": 20,
+    "status": "ok"
+   }
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "salary_day": 10,
+ "count": 0,
+ "summary": [],
+ "moves": [],
+ "current_cycle": {
+  "label": "2026-11",
+  "start_date": "2026-11-05",
+  "old_end_date": "2026-12-04",
+  "new_end_date": "2026-12-09"
+ }
+}

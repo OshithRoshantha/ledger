@@ -1,0 +1,10 @@
+{
+	email {$ACME_EMAIL}
+}
+
+# Caddy obtains and renews the certificate automatically and redirects HTTP -> HTTPS.
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy web:8080
+	header -Server
+}

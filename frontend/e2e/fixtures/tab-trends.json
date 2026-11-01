@@ -1,0 +1,537 @@
+{
+ "meta": {
+  "cycle": "2026-11",
+  "label": "Nov 2026",
+  "start": "2026-11-05",
+  "end": "2026-12-04",
+  "is_current": true,
+  "is_future": false,
+  "is_override": false,
+  "day_index": 8,
+  "days_total": 30,
+  "days_left": 22,
+  "elapsed_pct": 27,
+  "prev_cycle": "2026-10",
+  "compare": null,
+  "history_cycles": 6
+ },
+ "locked": false,
+ "unlock_message": null,
+ "rows": [
+  {
+   "cycle": "2025-12",
+   "label": "Dec 2025",
+   "short": "Dec",
+   "income": 0,
+   "spent": 0,
+   "saved": 0,
+   "savings_rate": null,
+   "top_category": null,
+   "change_pct": null,
+   "closed": true,
+   "has_data": false
+  },
+  {
+   "cycle": "2026-01",
+   "label": "Jan 2026",
+   "short": "Jan",
+   "income": 0,
+   "spent": 0,
+   "saved": 0,
+   "savings_rate": null,
+   "top_category": null,
+   "change_pct": null,
+   "closed": true,
+   "has_data": false
+  },
+  {
+   "cycle": "2026-02",
+   "label": "Feb 2026",
+   "short": "Feb",
+   "income": 0,
+   "spent": 0,
+   "saved": 0,
+   "savings_rate": null,
+   "top_category": null,
+   "change_pct": null,
+   "closed": true,
+   "has_data": false
+  },
+  {
+   "cycle": "2026-03",
+   "label": "Mar 2026",
+   "short": "Mar",
+   "income": 0,
+   "spent": 0,
+   "saved": 0,
+   "savings_rate": null,
+   "top_category": null,
+   "change_pct": null,
+   "closed": true,
+   "has_data": false
+  },
+  {
+   "cycle": "2026-04",
+   "label": "Apr 2026",
+   "short": "Apr",
+   "income": 0,
+   "spent": 0,
+   "saved": 0,
+   "savings_rate": null,
+   "top_category": null,
+   "change_pct": null,
+   "closed": true,
+   "has_data": false
+  },
+  {
+   "cycle": "2026-05",
+   "label": "May 2026",
+   "short": "May",
+   "income": 18500000,
+   "spent": 5542000,
+   "saved": 12958000,
+   "savings_rate": 70.0,
+   "top_category": "Foods & Households",
+   "change_pct": null,
+   "closed": true,
+   "has_data": true
+  },
+  {
+   "cycle": "2026-06",
+   "label": "Jun 2026",
+   "short": "Jun",
+   "income": 18500000,
+   "spent": 6135000,
+   "saved": 12365000,
+   "savings_rate": 66.8,
+   "top_category": "Foods & Households",
+   "change_pct": 10.7,
+   "closed": true,
+   "has_data": true
+  },
+  {
+   "cycle": "2026-07",
+   "label": "Jul 2026",
+   "short": "Jul",
+   "income": 21300000,
+   "spent": 6853000,
+   "saved": 14447000,
+   "savings_rate": 67.8,
+   "top_category": "Foods & Households",
+   "change_pct": 11.7,
+   "closed": true,
+   "has_data": true
+  },
+  {
+   "cycle": "2026-08",
+   "label": "Aug 2026",
+   "short": "Aug",
+   "income": 18500000,
+   "spent": 6136000,
+   "saved": 12364000,
+   "savings_rate": 66.8,
+   "top_category": "Foods & Households",
+   "change_pct": -10.5,
+   "closed": true,
+   "has_data": true
+  },
+  {
+   "cycle": "2026-09",
+   "label": "Sep 2026",
+   "short": "Sep",
+   "income": 18500000,
+   "spent": 6420000,
+   "saved": 12080000,
+   "savings_rate": 65.3,
+   "top_category": "Foods & Households",
+   "change_pct": 4.6,
+   "closed": true,
+   "has_data": true
+  },
+  {
+   "cycle": "2026-10",
+   "label": "Oct 2026",
+   "short": "Oct",
+   "income": 21750000,
+   "spent": 7195000,
+   "saved": 14555000,
+   "savings_rate": 66.9,
+   "top_category": "Foods & Households",
+   "change_pct": 12.1,
+   "closed": true,
+   "has_data": true
+  },
+  {
+   "cycle": "2026-11",
+   "label": "Nov 2026",
+   "short": "Nov",
+   "income": 18500000,
+   "spent": 6665500,
+   "saved": 11834500,
+   "savings_rate": 64.0,
+   "top_category": "Foods & Households",
+   "change_pct": -7.4,
+   "closed": false,
+   "has_data": true
+  }
+ ],
+ "takeaway": "You saved Rs 118,345 in Nov 2026, down from Rs 145,550 in Oct 2026.",
+ "mix": {
+  "categories": [
+   {
+    "key": "fixed:Foods & Households",
+    "name": "Foods & Households",
+    "colour": "#E69F00"
+   },
+   {
+    "key": "fixed:Utility Bills",
+    "name": "Utility Bills",
+    "colour": "#56B4E9"
+   },
+   {
+    "key": "fixed:Subscriptions",
+    "name": "Subscriptions",
+    "colour": "#CC79A7"
+   },
+   {
+    "key": "var:6ae70a3c832b7e173e808aab",
+    "name": "Mobile Top-ups",
+    "colour": "#009E73"
+   },
+   {
+    "key": "var:6ae70a3c832b7e173e808aac",
+    "name": "LMT Top-ups",
+    "colour": "#F0E442"
+   },
+   {
+    "key": "var:6ae70a3c832b7e173e808aad",
+    "name": "Uber / PickMe",
+    "colour": "#0072B2"
+   },
+   {
+    "key": "var:6ae70a3c832b7e173e808aae",
+    "name": "Bank & Cash Spending",
+    "colour": "#D55E00"
+   }
+  ],
+  "series": [
+   {
+    "cycle": "2025-12",
+    "short": "Dec",
+    "values": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "cycle": "2026-01",
+    "short": "Jan",
+    "values": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "cycle": "2026-02",
+    "short": "Feb",
+    "values": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "cycle": "2026-03",
+    "short": "Mar",
+    "values": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "cycle": "2026-04",
+    "short": "Apr",
+    "values": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "cycle": "2026-05",
+    "short": "May",
+    "values": [
+     3000000,
+     665000,
+     700000,
+     100000,
+     50000,
+     277000,
+     750000
+    ]
+   },
+   {
+    "cycle": "2026-06",
+    "short": "Jun",
+    "values": [
+     3000000,
+     685000,
+     700000,
+     100000,
+     60000,
+     370000,
+     1220000
+    ]
+   },
+   {
+    "cycle": "2026-07",
+    "short": "Jul",
+    "values": [
+     3000000,
+     705000,
+     700000,
+     100000,
+     70000,
+     478000,
+     1800000
+    ]
+   },
+   {
+    "cycle": "2026-08",
+    "short": "Aug",
+    "values": [
+     3000000,
+     725000,
+     700000,
+     100000,
+     80000,
+     601000,
+     930000
+    ]
+   },
+   {
+    "cycle": "2026-09",
+    "short": "Sep",
+    "values": [
+     3000000,
+     745000,
+     700000,
+     100000,
+     90000,
+     325000,
+     1460000
+    ]
+   },
+   {
+    "cycle": "2026-10",
+    "short": "Oct",
+    "values": [
+     3000000,
+     765000,
+     700000,
+     100000,
+     100000,
+     430000,
+     2100000
+    ]
+   },
+   {
+    "cycle": "2026-11",
+    "short": "Nov",
+    "values": [
+     3000000,
+     425000,
+     700000,
+     100000,
+     60000,
+     220500,
+     2160000
+    ]
+   }
+  ]
+ },
+ "pace": {
+  "days": 30,
+  "current": [
+   48000,
+   3148000,
+   4419000,
+   6059000,
+   6098500,
+   6533500,
+   6593500,
+   6665500
+  ],
+  "previous": [
+   0,
+   0,
+   100000,
+   4622000,
+   4902000,
+   4902000,
+   4968000,
+   4968000,
+   4968000,
+   5393000,
+   5493000,
+   5493000,
+   5577000,
+   5577000,
+   5997000,
+   6090000,
+   6090000,
+   6090000,
+   6090000,
+   6580000,
+   6580000,
+   6580000,
+   6580000,
+   6580000,
+   7140000,
+   7140000,
+   7140000,
+   7140000,
+   7140000,
+   7195000,
+   7195000
+  ],
+  "avg3": [
+   0,
+   1475000,
+   3056667,
+   4599000,
+   4859000,
+   4859000,
+   4922000,
+   4922000,
+   4922000,
+   5324000,
+   5414000,
+   5414000,
+   5495000,
+   5495000,
+   5895000,
+   5955000,
+   5955000,
+   5955000,
+   5987000,
+   6307000,
+   6307000,
+   6342000,
+   6342000,
+   6342000,
+   6528667,
+   6528667,
+   6528667,
+   6528667,
+   6547000,
+   6583667
+  ],
+  "prev_label": "Oct 2026"
+ },
+ "networth": [
+  {
+   "cycle": "2026-05",
+   "label": "May 26",
+   "saved": 12958000,
+   "cumulative": 12958000
+  },
+  {
+   "cycle": "2026-06",
+   "label": "Jun 26",
+   "saved": 12365000,
+   "cumulative": 25323000
+  },
+  {
+   "cycle": "2026-07",
+   "label": "Jul 26",
+   "saved": 14447000,
+   "cumulative": 39770000
+  },
+  {
+   "cycle": "2026-08",
+   "label": "Aug 26",
+   "saved": 12364000,
+   "cumulative": 52134000
+  },
+  {
+   "cycle": "2026-09",
+   "label": "Sep 26",
+   "saved": 12080000,
+   "cumulative": 64214000
+  },
+  {
+   "cycle": "2026-10",
+   "label": "Oct 26",
+   "saved": 14555000,
+   "cumulative": 78769000
+  },
+  {
+   "cycle": "2026-11",
+   "label": "Nov 26",
+   "saved": 11834500,
+   "cumulative": 90603500
+  }
+ ],
+ "best": {
+  "cycle": "2026-10",
+  "label": "Oct 2026",
+  "short": "Oct",
+  "income": 21750000,
+  "spent": 7195000,
+  "saved": 14555000,
+  "savings_rate": 66.9,
+  "top_category": "Foods & Households",
+  "change_pct": 12.1,
+  "closed": true,
+  "has_data": true,
+  "why": "Foods & Households was Rs 12,500 above average"
+ },
+ "worst": {
+  "cycle": "2026-09",
+  "label": "Sep 2026",
+  "short": "Sep",
+  "income": 18500000,
+  "spent": 6420000,
+  "saved": 12080000,
+  "savings_rate": 65.3,
+  "top_category": "Foods & Households",
+  "change_pct": 4.6,
+  "closed": true,
+  "has_data": true,
+  "why": "Foods & Households was Rs 12,500 above average"
+ },
+ "ytd": {
+  "year": "2026",
+  "income": 135550000,
+  "spent": 44946500,
+  "saved": 90603500,
+  "avg_monthly_savings": 8236682,
+  "biggest_category": "Foods & Households",
+  "biggest_amount": 21000000,
+  "cycles": 11
+ }
+}

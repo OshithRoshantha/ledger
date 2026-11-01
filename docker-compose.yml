@@ -1,0 +1,81 @@
+name: ledger
+
+# Database: MongoDB Atlas by default (MONGO_URL in .env).
+# To run MongoDB on the VPS instead, set COMPOSE_PROFILES=local-db in .env and point
+# MONGO_URL at mongodb://<app user>:<pw>@mongo:27017/ledger?authSource=ledger
+services:
+  mongo:
+    image: mongo:7.0
+    profiles: ["local-db"]
+    restart: unless-stopped
+    command: ["mongod", "--auth", "--bind_ip_all", "--wiredTigerCacheSizeGB", "0.25"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-}
+      MONGO_APP_USER: ${MONGO_APP_USER:-ledger}
+      MONGO_APP_PASSWORD: ${MONGO_APP_PASSWORD:-}
+      MONGO_APP_DB: ${MONGO_DB:-ledger}
+    volumes:
+      - mongo-data:/data/db
+      - ./deploy/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks: [internal]          # never published to the host or the internet
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ENV: production
+      MONGO_URL: ${MONGO_URL:?Set MONGO_URL in .env}
+      MONGO_DB: ${MONGO_DB:-ledger}
+    depends_on:
+      mongo:
+        condition: service_healthy
+        required: false           # only when the local-db profile is active
+    networks: [internal, egress]  # egress: outbound TLS to MongoDB Atlas
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+
+  web:
+    build: ./frontend
+    restart: unless-stopped
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/ledger.conf:ro
+      - ./deploy/security-headers.conf:/etc/nginx/security-headers.conf:ro
+    depends_on: [api]
+    networks: [internal, edge]
+    security_opt: ["no-new-privileges:true"]
+
+  caddy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on: [web]
+    networks: [edge]
+
+networks:
+  internal:
+    internal: true                # no route to the internet
+  egress: {}                      # outbound only (no published ports)
+  edge: {}
+
+volumes:
+  mongo-data:
+  caddy-data:
+  caddy-config:

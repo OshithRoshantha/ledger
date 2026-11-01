@@ -93,6 +93,15 @@ Caddy fetches the HTTPS certificate on first request and redirects HTTP to HTTPS
 
 The API container is read-only, non-root and `no-new-privileges`. It has outbound internet access, which it needs to reach Atlas, but no published ports.
 
+### Live setup: GitHub Pages (app) + Vercel (API)
+
+- **App:** https://oshithroshantha.github.io/ledger/
+- **API:** https://ledger-api-neon.vercel.app, a serverless Python function (`backend/api/index.py`, `backend/vercel.json`, `backend/requirements.txt`).
+- **Redeploy the API:** `cd backend && npx vercel deploy --prod`. Environment variables live in Vercel's project settings: `ENV=production`, `TOKEN_AUTH=true`, `FRONTEND_ORIGIN`, `MONGO_URL`, `MONGO_DB`, `JWT_SECRET`, `TOTP_ENC_KEY`, `COOKIE_SECURE`, `DEFAULT_TIMEZONE`, `DEFAULT_SALARY_DAY`.
+- **Redeploy the app:** `.\deploy\deploy-pages.ps1 -ApiBase https://ledger-api-neon.vercel.app`.
+- **Create the login:** run `python -m app.cli create-user` from your PC against Atlas, with the same `TOTP_ENC_KEY` as Vercel.
+- **Windows tip:** when piping values into `vercel env add` from Windows PowerShell, set `$OutputEncoding = New-Object System.Text.UTF8Encoding $false` first, or values get a BOM. The app strips BOMs and whitespace from settings defensively.
+
 ### Alternative: GitHub Pages (app) + Render (API), no domain needed
 
 - **App:** https://oshithroshantha.github.io/ledger/. Publish it with `.\deploy\deploy-pages.ps1 -ApiBase https://<render-service>.onrender.com`.

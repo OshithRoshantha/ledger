@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -37,6 +37,14 @@ class Settings(BaseSettings):
     argon2_parallelism: int = 2
 
     rate_limit_enabled: bool = True
+
+    @model_validator(mode="before")
+    @classmethod
+    def _strip_values(cls, data):
+        # Values pasted or piped into hosting dashboards/CLIs sometimes carry a BOM or a newline.
+        if isinstance(data, dict):
+            return {k: v.strip().lstrip("﻿").strip() if isinstance(v, str) else v for k, v in data.items()}
+        return data
 
     @field_validator("jwt_secret")
     @classmethod

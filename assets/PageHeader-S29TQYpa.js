@@ -1,0 +1,11 @@
+import{j as e}from"./motion-B7nO3FPi.js";import{g as l,r as d,a3 as o,u,ai as i,W as x}from"./index-BkCzkenU.js";/**
+ * @license lucide-react v0.453.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const p=l("ChevronLeft",[["path",{d:"m15 18-6-6 6-6",key:"1wnfg3"}]]);/**
+ * @license lucide-react v0.453.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const m=l("ChevronRight",[["path",{d:"m9 18 6-6-6-6",key:"mthhwq"}]]);function f({title:t,hideTitle:s,right:a,children:n,back:r}){return e.jsxs("header",{className:"header-bg sticky top-0 z-30 border-b border-hairline backdrop-blur-xl",style:{paddingTop:s?"max(var(--safe-top), 6px)":"max(var(--safe-top), 12px)"},children:[s?e.jsx("h1",{className:"sr-only",children:t}):e.jsxs("div",{className:"flex min-h-[48px] items-center justify-between gap-2 px-4",children:[e.jsxs("div",{className:"flex min-w-0 items-center gap-1",children:[r,e.jsx("h1",{className:"truncate text-[28px] font-bold tracking-tight",children:t})]}),a]}),n]})}function y(){const t=d(),{data:s}=o(),a=u(c=>c.setCycle);if(!t||!s)return e.jsx("div",{className:"h-11"});const n=s.current_cycle,r=t>=n;return e.jsxs("div",{className:"flex items-center justify-between px-2 pb-2",children:[e.jsx("button",{type:"button",className:"tap flex items-center justify-center rounded-full text-muted active:bg-elevated",onClick:()=>a(i(t,-1)),"aria-label":"Previous cycle",children:e.jsx(p,{size:22,strokeWidth:2,"aria-hidden":!0})}),e.jsxs("div",{className:"flex items-center gap-2",children:[e.jsx("span",{className:"num text-[17px] font-semibold","aria-live":"polite",children:x(t)}),t!==n?e.jsx("button",{type:"button",className:"rounded-full bg-[var(--brand-soft)] px-2.5 py-1 text-[12px] font-semibold text-brand",onClick:()=>a(null),children:"Current"}):null]}),e.jsx("button",{type:"button",className:"tap flex items-center justify-center rounded-full text-muted active:bg-elevated disabled:opacity-30",onClick:()=>a(i(t,1)===n?null:i(t,1)),disabled:r,"aria-label":"Next cycle",children:e.jsx(m,{size:22,strokeWidth:2,"aria-hidden":!0})})]})}export{m as C,f as P,y as a,p as b};

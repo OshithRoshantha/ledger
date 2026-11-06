@@ -26,10 +26,10 @@
  },
  "budgets": [
   {
-   "id": "6ae70a3d832b7e173e808b55",
+   "id": "6aede519506a80f9edfad8f1",
    "target_type": "reason",
-   "target_id": "6ae70a3c832b7e173e808aaf",
-   "key": "reason:6ae70a3c832b7e173e808aaf",
+   "target_id": "6aede518506a80f9edfad84b",
+   "key": "reason:6aede518506a80f9edfad84b",
    "name": "Shopping",
    "colour": "#8B5CF6",
    "icon": "shopping-bag",
@@ -42,10 +42,10 @@
    "projected": 5625000
   },
   {
-   "id": "6ae70a3d832b7e173e808b54",
+   "id": "6aede519506a80f9edfad8f0",
    "target_type": "reason",
-   "target_id": "6ae70a3c832b7e173e808ab1",
-   "key": "reason:6ae70a3c832b7e173e808ab1",
+   "target_id": "6aede518506a80f9edfad84d",
+   "key": "reason:6aede518506a80f9edfad84d",
    "name": "Restaurant",
    "colour": "#F43F5E",
    "icon": "utensils",
@@ -58,10 +58,10 @@
    "projected": 1912500
   },
   {
-   "id": "6ae70a3d832b7e173e808b52",
+   "id": "6aede519506a80f9edfad8ee",
    "target_type": "category",
-   "target_id": "6ae70a3c832b7e173e808aad",
-   "key": "var:6ae70a3c832b7e173e808aad",
+   "target_id": "6aede518506a80f9edfad849",
+   "key": "var:6aede518506a80f9edfad849",
    "name": "Uber / PickMe",
    "colour": "#0072B2",
    "icon": "car",
@@ -74,10 +74,10 @@
    "projected": 826900
   },
   {
-   "id": "6ae70a3d832b7e173e808b53",
+   "id": "6aede519506a80f9edfad8ef",
    "target_type": "category",
-   "target_id": "6ae70a3c832b7e173e808aac",
-   "key": "var:6ae70a3c832b7e173e808aac",
+   "target_id": "6aede518506a80f9edfad848",
+   "key": "var:6aede518506a80f9edfad848",
    "name": "LMT Top-ups",
    "colour": "#F0E442",
    "icon": "ticket",
@@ -216,7 +216,7 @@
  },
  "goals": [
   {
-   "id": "6ae70a3d832b7e173e808b56",
+   "id": "6aede519506a80f9edfad8f3",
    "name": "Emergency fund",
    "target_amount": 50000000,
    "target_date": "2027-10-01",
@@ -231,21 +231,21 @@
  ],
  "recommendations": [
   {
-   "id": "cut:var:6ae70a3c832b7e173e808aae",
+   "id": "cut:var:6aede518506a80f9edfad84a",
    "kind": "cut",
    "title": "Cutting Bank & Cash Spending back to your 3-cycle average saves Rs 66,033/cycle",
    "amount": 6603333,
-   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+   "action_link": "/spending/6aede518506a80f9edfad84a"
   },
   {
-   "id": "cut:reason:6ae70a3c832b7e173e808aaf",
+   "id": "cut:reason:6aede518506a80f9edfad84b",
    "kind": "cut",
    "title": "Cutting Shopping back to your 3-cycle average saves Rs 53,650/cycle",
    "amount": 5365000,
    "action_link": "/?tab=spending"
   },
   {
-   "id": "cut:reason:6ae70a3c832b7e173e808ab1",
+   "id": "cut:reason:6aede518506a80f9edfad84d",
    "kind": "cut",
    "title": "Cutting Restaurant back to your 3-cycle average saves Rs 15,825/cycle",
    "amount": 1582500,
@@ -256,10 +256,10 @@
    "kind": "trend",
    "title": "Bank & Cash Spending is up 3 cycles in a row (+126%)",
    "amount": 1170000,
-   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+   "action_link": "/spending/6aede518506a80f9edfad84a"
   },
   {
-   "id": "cut:reason:6ae70a3c832b7e173e808ab6",
+   "id": "cut:reason:6aede518506a80f9edfad852",
    "kind": "cut",
    "title": "Cutting Family back to your 3-cycle average saves Rs 5,625/cycle",
    "amount": 562500,

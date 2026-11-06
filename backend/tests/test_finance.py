@@ -97,6 +97,23 @@ async def test_mark_paid_reduces_balance_and_committed_then_unpay_restores(authe
     assert await FixedPayment.find_all().count() == 1
 
 
+async def test_savings_target_comes_out_of_safe_to_spend(authed, freeze_today):
+    freeze_today()
+    await onboard(authed, 10_000_000)
+    before = await _hero(authed)
+    assert before["savings_target"] == 0
+    r = await authed.patch(f"{API}/settings", json={"savings_target": 3_000_000})
+    assert r.status_code == 200 and r.json()["savings_target"] == 3_000_000
+    hero = await _hero(authed)
+    assert hero["savings_target"] == 3_000_000
+    assert hero["safe_to_spend"] == before["safe_to_spend"] - 3_000_000
+    assert hero["daily_allowance"] < before["daily_allowance"]
+    assert hero["balance"] == before["balance"]  # the target is set aside, not spent
+    # closed cycles are history: no target applied
+    assert (await _hero(authed, "2026-10"))["savings_target"] == 0
+    assert (await authed.patch(f"{API}/settings", json={"savings_target": 12.5})).status_code == 422
+
+
 async def test_bill_settled_from_earlier_salary_is_not_deducted(authed, freeze_today):
     freeze_today()
     await onboard(authed, 10_000_000)

@@ -1,5 +1,5 @@
 {
- "id": "6ae70a3c832b7e173e808aa3",
+ "id": "6aede518506a80f9edfad83f",
  "salary_day": 5,
  "salary_history": [
   {
@@ -7,14 +7,15 @@
    "effective_from_cycle": "2000-01"
   }
  ],
+ "savings_target": 3000000,
  "timezone": "Asia/Colombo",
  "currency": "LKR",
  "theme": "dark",
  "auto_lock_minutes": 10,
  "reminder_days_before_cycle_end": 5,
  "onboarded": true,
- "last_category_id": "6ae70a3c832b7e173e808aac",
- "last_reason_id": "6ae70a3c832b7e173e808ab6",
+ "last_category_id": "6aede518506a80f9edfad848",
+ "last_reason_id": "6aede518506a80f9edfad852",
  "last_method": "bank_transfer",
  "current_cycle": "2026-11",
  "current_cycle_start": "2026-11-05",

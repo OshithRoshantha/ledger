@@ -216,7 +216,7 @@ test.describe('dashboard tabs', () => {
     await page.getByRole('radio', { name: /same cycle last year/ }).click();
     await expect(page.getByText(/^vs Nov 2025, same day 8/).first()).toBeVisible();
     // tap a KPI card -> drill-down sheet with entries
-    await page.getByRole('button', { name: /Total spent/ }).click();
+    await page.getByRole('button', { name: /Spent so far/ }).click();
     await expect(page.getByRole('dialog')).toBeVisible();
   });
 

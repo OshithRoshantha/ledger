@@ -4,7 +4,7 @@ import type { BillsResponse, Overview } from './types';
 const overview = {
   meta: { is_current: true, start: '2026-11-05', end: '2026-12-04' },
   hero: {
-    safe_to_spend: 9_610_000, balance: 14_000_000, committed: 4_390_000, reserved: 0, income: 15_000_000, spent: 1_000_000,
+    safe_to_spend: 9_610_000, balance: 14_000_000, committed: 4_390_000, reserved: 0, savings_target: 0, projected_savings: 0, income: 15_000_000, spent: 1_000_000,
     daily_allowance: 417_800, days_remaining: 23, status: 'ok', elapsed_pct: 27, income_spent_pct: 6.7, pace_warning: false,
   },
   pending_bills: [{ id: 'elec', name: 'Electricity', amount: 200_000, icon: 'zap', colour: '#000000' }],
@@ -16,6 +16,10 @@ describe('heroAfter (instant Safe to spend + daily allowance)', () => {
     expect(o.hero.safe_to_spend).toBe(9_380_000);
     expect(o.hero.daily_allowance).toBe(Math.round(9_380_000 / 23 / 100) * 100);
     expect(o.hero.balance).toBe(13_770_000);
+  });
+  it('the savings target is kept out of safe-to-spend', () => {
+    const o = heroAfter({ ...overview, hero: { ...overview.hero, savings_target: 3_000_000 } }, 0);
+    expect(o.hero.safe_to_spend).toBe(9_610_000 - 3_000_000);
   });
   it('reserved goal money is kept out of safe-to-spend', () => {
     const o = heroAfter({ ...overview, hero: { ...overview.hero, reserved: 1_000_000 } }, 0);

@@ -44,8 +44,8 @@ COLLECTIONS: dict[str, type[Document]] = {
     "budgets": Budget,
     "goals": Goal,
 }
-SETTINGS_FIELDS = ("salary_day", "salary_history", "timezone", "theme", "auto_lock_minutes", "reminder_days_before_cycle_end", "onboarded")
-PATCHABLE = ("timezone", "theme", "auto_lock_minutes", "reminder_days_before_cycle_end")
+SETTINGS_FIELDS = ("salary_day", "salary_history", "savings_target", "timezone", "theme", "auto_lock_minutes", "reminder_days_before_cycle_end", "onboarded")
+PATCHABLE = ("timezone", "theme", "auto_lock_minutes", "reminder_days_before_cycle_end", "savings_target")
 
 
 def _stamp() -> str:

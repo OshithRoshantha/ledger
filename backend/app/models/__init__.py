@@ -154,6 +154,7 @@ class AppSettings(Document):
     user_id: PydanticObjectId
     salary_day: int = 5
     salary_history: list[AmountHistory] = Field(default_factory=list)
+    savings_target: int = 0  # kept aside every cycle: comes out of Safe to spend
     timezone: str = "Asia/Colombo"
     currency: Literal["LKR"] = "LKR"
     theme: Theme = "dark"

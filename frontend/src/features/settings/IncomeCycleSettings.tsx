@@ -196,8 +196,10 @@ function Prefs({ settings }: { settings?: AppSettings }) {
   const [tz, setTz] = useState('Asia/Colombo');
   const [reminder, setReminder] = useState(5);
   const [lock, setLock] = useState(10);
+  const [target, setTarget] = useState('');
   useEffect(() => {
     if (!settings) return;
+    setTarget(centsToRaw(settings.savings_target));
     setTz(settings.timezone);
     setReminder(settings.reminder_days_before_cycle_end);
     setLock(settings.auto_lock_minutes);
@@ -207,6 +209,9 @@ function Prefs({ settings }: { settings?: AppSettings }) {
     <section>
       <h2 className="section-title mb-2 px-1">Preferences</h2>
       <div className="card space-y-4 p-4">
+        <Field label="Monthly savings target (Rs)" hint="Kept aside every cycle: it comes out of Safe to spend.">
+          <input className={inputClass + ' num'} inputMode="decimal" placeholder="0" value={target} onChange={(e) => setTarget(e.target.value.replace(/[^\d.]/g, ''))} />
+        </Field>
         <Field label="Timezone">
           <select className={inputClass} value={tz} onChange={(e) => setTz(e.target.value)}>
             {[...new Set([settings.timezone, ...TIMEZONES])].map((z) => (
@@ -227,7 +232,7 @@ function Prefs({ settings }: { settings?: AppSettings }) {
           variant="secondary"
           onClick={async () => {
             try {
-              await api('/settings', { method: 'PATCH', body: { timezone: tz, reminder_days_before_cycle_end: reminder, auto_lock_minutes: lock } });
+              await api('/settings', { method: 'PATCH', body: { timezone: tz, reminder_days_before_cycle_end: reminder, auto_lock_minutes: lock, savings_target: parseToCents(target || '0') ?? 0 } });
               await qc.invalidateQueries();
               toast({ message: 'Saved', tone: 'success' });
             } catch (e) {

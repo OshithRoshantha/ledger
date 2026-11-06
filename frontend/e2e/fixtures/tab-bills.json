@@ -22,7 +22,7 @@
   "pending_amount": 350000,
   "items": [
    {
-    "id": "6ae70a3c832b7e173e808aa4",
+    "id": "6aede518506a80f9edfad840",
     "name": "Foods & Households",
     "group": "Foods & Households",
     "icon": "shopping-basket",
@@ -34,7 +34,7 @@
     "day_of_cycle": 2
    },
    {
-    "id": "6ae70a3c832b7e173e808aa5",
+    "id": "6aede518506a80f9edfad841",
     "name": "Water Bill",
     "group": "Utility Bills",
     "icon": "droplets",
@@ -46,7 +46,7 @@
     "day_of_cycle": null
    },
    {
-    "id": "6ae70a3c832b7e173e808aa6",
+    "id": "6aede518506a80f9edfad842",
     "name": "Electricity Bill",
     "group": "Utility Bills",
     "icon": "zap",
@@ -58,7 +58,7 @@
     "day_of_cycle": 6
    },
    {
-    "id": "6ae70a3c832b7e173e808aa7",
+    "id": "6aede518506a80f9edfad843",
     "name": "Television",
     "group": "Utility Bills",
     "icon": "tv",
@@ -70,7 +70,7 @@
     "day_of_cycle": null
    },
    {
-    "id": "6ae70a3c832b7e173e808aa8",
+    "id": "6aede518506a80f9edfad844",
     "name": "Mobile Internet",
     "group": "Utility Bills",
     "icon": "smartphone",
@@ -82,7 +82,7 @@
     "day_of_cycle": null
    },
    {
-    "id": "6ae70a3c832b7e173e808aa9",
+    "id": "6aede518506a80f9edfad845",
     "name": "Broadband",
     "group": "Utility Bills",
     "icon": "wifi",
@@ -94,7 +94,7 @@
     "day_of_cycle": 4
    },
    {
-    "id": "6ae70a3c832b7e173e808aaa",
+    "id": "6aede518506a80f9edfad846",
     "name": "Claude Pro",
     "group": "Subscriptions",
     "icon": "sparkles",
@@ -109,7 +109,7 @@
  },
  "trends": [
   {
-   "id": "6ae70a3c832b7e173e808aa4",
+   "id": "6aede518506a80f9edfad840",
    "name": "Foods & Households",
    "colour": "#E69F00",
    "points": [
@@ -180,7 +180,7 @@
    "flag": false
   },
   {
-   "id": "6ae70a3c832b7e173e808aa5",
+   "id": "6aede518506a80f9edfad841",
    "name": "Water Bill",
    "colour": "#56B4E9",
    "points": [
@@ -251,7 +251,7 @@
    "flag": false
   },
   {
-   "id": "6ae70a3c832b7e173e808aa6",
+   "id": "6aede518506a80f9edfad842",
    "name": "Electricity Bill",
    "colour": "#56B4E9",
    "points": [
@@ -322,7 +322,7 @@
    "flag": true
   },
   {
-   "id": "6ae70a3c832b7e173e808aa7",
+   "id": "6aede518506a80f9edfad843",
    "name": "Television",
    "colour": "#56B4E9",
    "points": [
@@ -393,7 +393,7 @@
    "flag": false
   },
   {
-   "id": "6ae70a3c832b7e173e808aa8",
+   "id": "6aede518506a80f9edfad844",
    "name": "Mobile Internet",
    "colour": "#56B4E9",
    "points": [
@@ -464,7 +464,7 @@
    "flag": false
   },
   {
-   "id": "6ae70a3c832b7e173e808aa9",
+   "id": "6aede518506a80f9edfad845",
    "name": "Broadband",
    "colour": "#56B4E9",
    "points": [
@@ -535,7 +535,7 @@
    "flag": false
   },
   {
-   "id": "6ae70a3c832b7e173e808aaa",
+   "id": "6aede518506a80f9edfad846",
    "name": "Claude Pro",
    "colour": "#CC79A7",
    "points": [
@@ -700,43 +700,43 @@
  },
  "timing": [
   {
-   "id": "6ae70a3c832b7e173e808aa4",
+   "id": "6aede518506a80f9edfad840",
    "name": "Foods & Households",
    "avg_day": 2.9,
    "samples": 7
   },
   {
-   "id": "6ae70a3c832b7e173e808aa5",
+   "id": "6aede518506a80f9edfad841",
    "name": "Water Bill",
    "avg_day": 3.0,
    "samples": 6
   },
   {
-   "id": "6ae70a3c832b7e173e808aa6",
+   "id": "6aede518506a80f9edfad842",
    "name": "Electricity Bill",
    "avg_day": 3.4,
    "samples": 7
   },
   {
-   "id": "6ae70a3c832b7e173e808aa7",
+   "id": "6aede518506a80f9edfad843",
    "name": "Television",
    "avg_day": 3.0,
    "samples": 6
   },
   {
-   "id": "6ae70a3c832b7e173e808aa8",
+   "id": "6aede518506a80f9edfad844",
    "name": "Mobile Internet",
    "avg_day": 3.0,
    "samples": 6
   },
   {
-   "id": "6ae70a3c832b7e173e808aa9",
+   "id": "6aede518506a80f9edfad845",
    "name": "Broadband",
    "avg_day": 3.1,
    "samples": 7
   },
   {
-   "id": "6ae70a3c832b7e173e808aaa",
+   "id": "6aede518506a80f9edfad846",
    "name": "Claude Pro",
    "avg_day": 3.0,
    "samples": 7
@@ -745,49 +745,49 @@
  "annual": {
   "items": [
    {
-    "id": "6ae70a3c832b7e173e808aa4",
+    "id": "6aede518506a80f9edfad840",
     "name": "Foods & Households",
     "colour": "#E69F00",
     "monthly": 3000000,
     "annual": 36000000
    },
    {
-    "id": "6ae70a3c832b7e173e808aaa",
+    "id": "6aede518506a80f9edfad846",
     "name": "Claude Pro",
     "colour": "#CC79A7",
     "monthly": 700000,
     "annual": 8400000
    },
    {
-    "id": "6ae70a3c832b7e173e808aa5",
+    "id": "6aede518506a80f9edfad841",
     "name": "Water Bill",
     "colour": "#56B4E9",
     "monthly": 200000,
     "annual": 2400000
    },
    {
-    "id": "6ae70a3c832b7e173e808aa6",
+    "id": "6aede518506a80f9edfad842",
     "name": "Electricity Bill",
     "colour": "#56B4E9",
     "monthly": 200000,
     "annual": 2400000
    },
    {
-    "id": "6ae70a3c832b7e173e808aa9",
+    "id": "6aede518506a80f9edfad845",
     "name": "Broadband",
     "colour": "#56B4E9",
     "monthly": 140000,
     "annual": 1680000
    },
    {
-    "id": "6ae70a3c832b7e173e808aa7",
+    "id": "6aede518506a80f9edfad843",
     "name": "Television",
     "colour": "#56B4E9",
     "monthly": 100000,
     "annual": 1200000
    },
    {
-    "id": "6ae70a3c832b7e173e808aa8",
+    "id": "6aede518506a80f9edfad844",
     "name": "Mobile Internet",
     "colour": "#56B4E9",
     "monthly": 50000,
@@ -799,7 +799,7 @@
  },
  "template_vs_actual": [
   {
-   "id": "6ae70a3c832b7e173e808aa4",
+   "id": "6aede518506a80f9edfad840",
    "name": "Foods & Households",
    "template": 3000000,
    "actual": 3000000,
@@ -807,7 +807,7 @@
    "avg_actual": 3000000
   },
   {
-   "id": "6ae70a3c832b7e173e808aa5",
+   "id": "6aede518506a80f9edfad841",
    "name": "Water Bill",
    "template": 200000,
    "actual": null,
@@ -815,7 +815,7 @@
    "avg_actual": 197500
   },
   {
-   "id": "6ae70a3c832b7e173e808aa6",
+   "id": "6aede518506a80f9edfad842",
    "name": "Electricity Bill",
    "template": 200000,
    "actual": 285000,
@@ -823,7 +823,7 @@
    "avg_actual": 227500
   },
   {
-   "id": "6ae70a3c832b7e173e808aa7",
+   "id": "6aede518506a80f9edfad843",
    "name": "Television",
    "template": 100000,
    "actual": null,
@@ -831,7 +831,7 @@
    "avg_actual": 100000
   },
   {
-   "id": "6ae70a3c832b7e173e808aa8",
+   "id": "6aede518506a80f9edfad844",
    "name": "Mobile Internet",
    "template": 50000,
    "actual": null,
@@ -839,7 +839,7 @@
    "avg_actual": 50000
   },
   {
-   "id": "6ae70a3c832b7e173e808aa9",
+   "id": "6aede518506a80f9edfad845",
    "name": "Broadband",
    "template": 140000,
    "actual": 140000,
@@ -847,7 +847,7 @@
    "avg_actual": 140000
   },
   {
-   "id": "6ae70a3c832b7e173e808aaa",
+   "id": "6aede518506a80f9edfad846",
    "name": "Claude Pro",
    "template": 700000,
    "actual": 700000,

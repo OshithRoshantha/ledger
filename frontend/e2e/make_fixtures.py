@@ -118,6 +118,7 @@ async def main() -> None:
         await post("/budgets", {"target_type": "category", "target_id": lmt, "amount": 150_000})
         await post("/budgets", {"target_type": "reason", "target_id": reasons["Restaurant"], "amount": 600_000})
         await post("/budgets", {"target_type": "reason", "target_id": reasons["Shopping"], "amount": 1_200_000})
+        await c.patch(f"{API}/settings", json={"savings_target": 3_000_000})
         await post("/goals", {"name": "Emergency fund", "target_amount": 50_000_000, "target_date": "2027-10-01", "saved_amount": 12_000_000,
                               "monthly_reserve": 2_000_000})
 

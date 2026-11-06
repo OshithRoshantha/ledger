@@ -89,6 +89,7 @@ class InsightContext:
     goals: list[GoalStat] = field(default_factory=list)
     fixed_ratio: Optional[float] = None  # fixed bills / income, %
     fixed_target: float = 50.0
+    savings_target: int = 0
 
 
 def _insight(type_: str, severity: str, title: str, detail: str = "", metric: Optional[str] = None,
@@ -250,7 +251,19 @@ def _pending(ctx: InsightContext) -> list[dict]:
                      f"{_days(ctx.days_left)} left in the cycle.", "bills", None, ctx.committed, "/bills")]
 
 
-GENERATORS = (_overspend, _budget_warning, _anomaly, _trend, _bill_increase, _pace, _goals, _wins, _pending)
+def _savings_target(ctx: InsightContext) -> list[dict]:
+    if not ctx.is_current or not ctx.income or not ctx.savings_target:
+        return []
+    projected = ctx.income - ctx.projected_spend
+    gap = ctx.savings_target - projected
+    if gap > 0:
+        return [_insight("goal_progress", "high", f"At this pace you'll save {rs(projected)}, {rs(gap)} short of your {rs(ctx.savings_target)} target",
+                         "Cut back on variable spending to stay on target.", "savings_target", None, gap, "/?tab=plan")]
+    return [_insight("goal_progress", "positive", f"On track to save {rs(projected)} this cycle",
+                     f"Your target is {rs(ctx.savings_target)}.", "savings_target", None, projected - ctx.savings_target, "/?tab=plan")]
+
+
+GENERATORS = (_overspend, _budget_warning, _anomaly, _trend, _bill_increase, _pace, _goals, _savings_target, _wins, _pending)
 
 
 def generate(ctx: InsightContext, limit: int = 8) -> list[dict[str, Any]]:

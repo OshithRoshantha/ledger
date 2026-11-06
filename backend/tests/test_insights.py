@@ -87,6 +87,14 @@ def test_bills_pending_and_alerts_order():
     assert all(a["severity"] != "positive" for a in strip) and len(strip) <= 5
 
 
+def test_savings_target_shortfall_and_on_track():
+    short = generate(ctx(income=10_000_000, projected_spend=8_500_000, savings_target=3_000_000))
+    assert any(i["title"] == "At this pace you'll save Rs 15,000, Rs 15,000 short of your Rs 30,000 target" and i["severity"] == "high" for i in short)
+    ok = generate(ctx(income=10_000_000, projected_spend=6_000_000, savings_target=3_000_000))
+    assert any(i["title"] == "On track to save Rs 40,000 this cycle" and i["severity"] == "positive" for i in ok)
+    assert not any(i.get("metric") == "savings_target" for i in generate(ctx(savings_target=0)))
+
+
 def test_recommendations():
     c = ctx(categories=[CatStat("reason:r", "Restaurant", 600_000, 300_000, history=[400_000, 380_000, 480_000], projected=840_000),
                         CatStat("var:u", "Uber / PickMe", 300_000, 300_000, history=[400_000, 480_000, 552_000], projected=500_000)],

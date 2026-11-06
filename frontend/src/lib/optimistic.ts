@@ -19,7 +19,7 @@ export function heroAfter(o: Overview, spentDelta: number, committedDelta = 0): 
   const spent = h.spent + spentDelta;
   const balance = h.income - spent;
   const committed = Math.max(0, h.committed + committedDelta);
-  const safe = balance - committed - h.reserved;
+  const safe = balance - committed - h.reserved - h.savings_target;
   return {
     ...o,
     hero: {

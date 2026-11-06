@@ -25,13 +25,15 @@
   "history_cycles": 6
  },
  "hero": {
-  "safe_to_spend": 9484500,
+  "safe_to_spend": 6484500,
   "balance": 11834500,
   "committed": 350000,
   "reserved": 2000000,
   "income": 18500000,
+  "savings_target": 3000000,
+  "projected_savings": 4498100,
   "spent": 6665500,
-  "daily_allowance": 412400,
+  "daily_allowance": 281900,
   "days_remaining": 23,
   "status": "ok",
   "elapsed_pct": 27,
@@ -276,41 +278,41 @@
     "amount": -100000,
     "kind": "sub",
     "colour": "#009E73",
-    "key": "var:6ae70a3c832b7e173e808aab"
+    "key": "var:6aede518506a80f9edfad847"
    },
    {
     "label": "LMT Top-ups",
     "amount": -60000,
     "kind": "sub",
     "colour": "#F0E442",
-    "key": "var:6ae70a3c832b7e173e808aac"
+    "key": "var:6aede518506a80f9edfad848"
    },
    {
     "label": "Uber / PickMe",
     "amount": -220500,
     "kind": "sub",
     "colour": "#0072B2",
-    "key": "var:6ae70a3c832b7e173e808aad"
+    "key": "var:6aede518506a80f9edfad849"
    },
    {
     "label": "Bank: Shopping",
     "amount": -1500000,
     "kind": "sub",
-    "key": "reason:6ae70a3c832b7e173e808aaf",
+    "key": "reason:6aede518506a80f9edfad84b",
     "colour": "#8B5CF6"
    },
    {
     "label": "Bank: Restaurant",
     "amount": -510000,
     "kind": "sub",
-    "key": "reason:6ae70a3c832b7e173e808ab1",
+    "key": "reason:6aede518506a80f9edfad84d",
     "colour": "#F43F5E"
    },
    {
     "label": "Bank: Family",
     "amount": -150000,
     "kind": "sub",
-    "key": "reason:6ae70a3c832b7e173e808ab6",
+    "key": "reason:6aede518506a80f9edfad852",
     "colour": "#3B82F6"
    },
    {
@@ -331,7 +333,7 @@
    "severity": "high",
    "title": "Shopping is over budget by Rs 3,000",
    "detail": "Rs 15,000 spent of a Rs 12,000 budget.",
-   "metric": "reason:6ae70a3c832b7e173e808aaf",
+   "metric": "reason:6aede518506a80f9edfad84b",
    "delta_pct": 25.0,
    "delta_abs": 300000,
    "action_link": "/?tab=spending"
@@ -342,7 +344,7 @@
    "severity": "medium",
    "title": "Restaurant is on track to exceed its budget",
    "detail": "Projected Rs 19,125 against Rs 6,000.",
-   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "metric": "reason:6aede518506a80f9edfad84d",
    "delta_pct": 218.8,
    "delta_abs": 1312500,
    "action_link": "/?tab=spending"
@@ -353,21 +355,21 @@
    "severity": "medium",
    "title": "Bank & Cash Spending is up 3 cycles in a row (+126%)",
    "detail": "Rs 9,300 \u2192 Rs 14,600 \u2192 Rs 21,000.",
-   "metric": "var:6ae70a3c832b7e173e808aae",
+   "metric": "var:6aede518506a80f9edfad84a",
    "delta_pct": 125.8,
    "delta_abs": 1170000,
-   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+   "action_link": "/spending/6aede518506a80f9edfad84a"
   },
   {
-   "id": "anomaly:6ae70a3d832b7e173e808b4e",
+   "id": "anomaly:6aede519506a80f9edfad8ea",
    "type": "anomaly",
    "severity": "medium",
    "title": "Unusual: Rs 15,000 ATM withdrawal (3.9\u00d7 your average)",
    "detail": "Bank & Cash Spending entries usually average Rs 3,875.",
-   "metric": "var:6ae70a3c832b7e173e808aae:atm",
+   "metric": "var:6aede518506a80f9edfad84a:atm",
    "delta_pct": 287.1,
    "delta_abs": 1112500,
-   "action_link": "/spending/6ae70a3c832b7e173e808aae:atm"
+   "action_link": "/spending/6aede518506a80f9edfad84a:atm"
   },
   {
    "id": "budget_warning:Restaurant is 85% of its budget with 22 days left",
@@ -375,7 +377,7 @@
    "severity": "medium",
    "title": "Restaurant is 85% of its budget with 22 days left",
    "detail": "Rs 900 left of Rs 6,000.",
-   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "metric": "reason:6aede518506a80f9edfad84d",
    "delta_pct": 85.0,
    "delta_abs": 510000,
    "action_link": "/?tab=spending"
@@ -388,7 +390,7 @@
    "severity": "high",
    "title": "Shopping is over budget by Rs 3,000",
    "detail": "Rs 15,000 spent of a Rs 12,000 budget.",
-   "metric": "reason:6ae70a3c832b7e173e808aaf",
+   "metric": "reason:6aede518506a80f9edfad84b",
    "delta_pct": 25.0,
    "delta_abs": 300000,
    "action_link": "/?tab=spending"
@@ -399,7 +401,7 @@
    "severity": "medium",
    "title": "Restaurant is on track to exceed its budget",
    "detail": "Projected Rs 19,125 against Rs 6,000.",
-   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "metric": "reason:6aede518506a80f9edfad84d",
    "delta_pct": 218.8,
    "delta_abs": 1312500,
    "action_link": "/?tab=spending"
@@ -410,21 +412,21 @@
    "severity": "medium",
    "title": "Bank & Cash Spending is up 3 cycles in a row (+126%)",
    "detail": "Rs 9,300 \u2192 Rs 14,600 \u2192 Rs 21,000.",
-   "metric": "var:6ae70a3c832b7e173e808aae",
+   "metric": "var:6aede518506a80f9edfad84a",
    "delta_pct": 125.8,
    "delta_abs": 1170000,
-   "action_link": "/spending/6ae70a3c832b7e173e808aae"
+   "action_link": "/spending/6aede518506a80f9edfad84a"
   },
   {
-   "id": "anomaly:6ae70a3d832b7e173e808b4e",
+   "id": "anomaly:6aede519506a80f9edfad8ea",
    "type": "anomaly",
    "severity": "medium",
    "title": "Unusual: Rs 15,000 ATM withdrawal (3.9\u00d7 your average)",
    "detail": "Bank & Cash Spending entries usually average Rs 3,875.",
-   "metric": "var:6ae70a3c832b7e173e808aae:atm",
+   "metric": "var:6aede518506a80f9edfad84a:atm",
    "delta_pct": 287.1,
    "delta_abs": 1112500,
-   "action_link": "/spending/6ae70a3c832b7e173e808aae:atm"
+   "action_link": "/spending/6aede518506a80f9edfad84a:atm"
   },
   {
    "id": "budget_warning:Restaurant is 85% of its budget with 22 days left",
@@ -432,7 +434,7 @@
    "severity": "medium",
    "title": "Restaurant is 85% of its budget with 22 days left",
    "detail": "Rs 900 left of Rs 6,000.",
-   "metric": "reason:6ae70a3c832b7e173e808ab1",
+   "metric": "reason:6aede518506a80f9edfad84d",
    "delta_pct": 85.0,
    "delta_abs": 510000,
    "action_link": "/?tab=spending"
@@ -443,10 +445,10 @@
    "severity": "medium",
    "title": "Uber / PickMe is on track to exceed its budget",
    "detail": "Projected Rs 8,269 against Rs 4,000.",
-   "metric": "var:6ae70a3c832b7e173e808aad",
+   "metric": "var:6aede518506a80f9edfad849",
    "delta_pct": 106.7,
    "delta_abs": 426900,
-   "action_link": "/spending/6ae70a3c832b7e173e808aad"
+   "action_link": "/spending/6aede518506a80f9edfad849"
   },
   {
    "id": "bill_increase:Electricity Bill paid Rs 850 above usual",
@@ -454,7 +456,7 @@
    "severity": "medium",
    "title": "Electricity Bill paid Rs 850 above usual",
    "detail": "Paid Rs 2,850; the usual amount is Rs 2,000.",
-   "metric": "6ae70a3c832b7e173e808aa6",
+   "metric": "6aede518506a80f9edfad842",
    "delta_pct": 42.5,
    "delta_abs": 85000,
    "action_link": "/bills"
@@ -473,26 +475,26 @@
  ],
  "pending_bills": [
   {
-   "id": "6ae70a3c832b7e173e808aa5",
+   "id": "6aede518506a80f9edfad841",
    "name": "Water Bill",
    "amount": 200000,
    "icon": "droplets",
    "colour": "#56B4E9"
   },
   {
-   "id": "6ae70a3c832b7e173e808aa7",
+   "id": "6aede518506a80f9edfad843",
    "name": "Television",
    "amount": 100000,
    "icon": "tv",
    "colour": "#56B4E9"
   },
   {
-   "id": "6ae70a3c832b7e173e808aa8",
+   "id": "6aede518506a80f9edfad844",
    "name": "Mobile Internet",
    "amount": 50000,
    "icon": "smartphone",
    "colour": "#56B4E9"
   }
  ],
- "takeaway": "You can spend Rs 4,124/day for 23 more days."
+ "takeaway": "You can spend Rs 2,819/day for 23 more days."
 }

@@ -22,6 +22,7 @@ export interface AppSettings {
   salary_day: number;
   salary_amount: number;
   salary_history: AmountHistory[];
+  savings_target: number;
   timezone: string;
   currency: 'LKR';
   theme: 'dark' | 'light' | 'system';
@@ -256,6 +257,8 @@ export interface Overview {
     balance: number;
     committed: number;
     reserved: number;
+    savings_target: number;
+    projected_savings: number;
     income: number;
     spent: number;
     daily_allowance: number | null;

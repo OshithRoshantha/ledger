@@ -4,7 +4,21 @@
    "event": "settings_changed",
    "ip": "127.0.0.1",
    "user_agent": "python-httpx/0.28.1",
-   "at": "2026-11-01T09:45:32.774000+00:00",
+   "at": "2026-11-06T14:32:57.250000+00:00",
+   "details": {
+    "before": {
+     "savings_target": 0
+    },
+    "after": {
+     "savings_target": 3000000
+    }
+   }
+  },
+  {
+   "event": "settings_changed",
+   "ip": "127.0.0.1",
+   "user_agent": "python-httpx/0.28.1",
+   "at": "2026-11-06T14:32:56.635000+00:00",
    "details": {
     "after": {
      "onboarded": true,
@@ -17,7 +31,7 @@
    "event": "login_success",
    "ip": "127.0.0.1",
    "user_agent": "python-httpx/0.28.1",
-   "at": "2026-11-01T09:45:32.724000+00:00",
+   "at": "2026-11-06T14:32:56.556000+00:00",
    "details": {
     "method": "totp"
    }
@@ -27,8 +41,9 @@
   {
    "ip": "127.0.0.1",
    "user_agent": "python-httpx/0.28.1",
-   "last_seen_at": "2026-11-01T09:45:32.724000+00:00",
+   "last_seen_at": "2026-11-06T14:32:56.555000+00:00",
    "current": true
   }
- ]
+ ],
+ "trusted_devices": []
 }

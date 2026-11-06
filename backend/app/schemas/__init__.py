@@ -203,6 +203,7 @@ class SettingsPatch(Strict):
     theme: Optional[Theme] = None
     auto_lock_minutes: Optional[Annotated[int, Field(ge=1, le=60)]] = None
     reminder_days_before_cycle_end: Optional[Annotated[int, Field(ge=0, le=15)]] = None
+    savings_target: Optional[Annotated[StrictInt, Field(ge=0, le=MAX_CENTS)]] = None
 
 
 SalaryDay = Annotated[int, Field(ge=1, le=31)]

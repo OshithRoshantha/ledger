@@ -51,7 +51,7 @@ export function ExpenseForm({
       {nudge !== null && nudge !== undefined && nudge < 0 ? (
         <p role="status" className="-mt-2 flex items-center justify-center gap-1.5 text-center text-[14px] font-medium text-warning">
           <AlertTriangle size={16} aria-hidden />
-          This leaves {formatRs(nudge, { whole: true })} after your pending bills.
+          This leaves {formatRs(nudge, { whole: true })} after your bills and savings.
         </p>
       ) : null}
 

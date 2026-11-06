@@ -11,7 +11,7 @@
  ],
  "items": [
   {
-   "id": "6ae70a3c832b7e173e808aa4",
+   "id": "6aede518506a80f9edfad840",
    "name": "Foods & Households",
    "group": "Foods & Households",
    "icon": "shopping-basket",
@@ -19,19 +19,20 @@
    "template_amount": 3000000,
    "status": "paid",
    "payment": {
-    "id": "6ae70a3d832b7e173e808b45",
-    "fixed_expense_id": "6ae70a3c832b7e173e808aa4",
+    "id": "6aede519506a80f9edfad8e1",
+    "fixed_expense_id": "6aede518506a80f9edfad840",
     "cycle": "2026-11",
     "amount_paid": 3000000,
     "paid_at": "2026-11-06T06:30:00+00:00",
     "day": "2026-11-06",
     "note": "",
+    "deducted": true,
     "deleted_at": null,
-    "created_at": "2026-11-01T09:45:33.350000+00:00"
+    "created_at": "2026-11-06T14:32:57.186000+00:00"
    }
   },
   {
-   "id": "6ae70a3c832b7e173e808aa5",
+   "id": "6aede518506a80f9edfad841",
    "name": "Water Bill",
    "group": "Utility Bills",
    "icon": "droplets",
@@ -41,7 +42,7 @@
    "payment": null
   },
   {
-   "id": "6ae70a3c832b7e173e808aa6",
+   "id": "6aede518506a80f9edfad842",
    "name": "Electricity Bill",
    "group": "Utility Bills",
    "icon": "zap",
@@ -49,19 +50,20 @@
    "template_amount": 200000,
    "status": "paid",
    "payment": {
-    "id": "6ae70a3d832b7e173e808b46",
-    "fixed_expense_id": "6ae70a3c832b7e173e808aa6",
+    "id": "6aede519506a80f9edfad8e2",
+    "fixed_expense_id": "6aede518506a80f9edfad842",
     "cycle": "2026-11",
     "amount_paid": 285000,
     "paid_at": "2026-11-10T06:30:00+00:00",
     "day": "2026-11-10",
     "note": "",
+    "deducted": true,
     "deleted_at": null,
-    "created_at": "2026-11-01T09:45:33.356000+00:00"
+    "created_at": "2026-11-06T14:32:57.186000+00:00"
    }
   },
   {
-   "id": "6ae70a3c832b7e173e808aa7",
+   "id": "6aede518506a80f9edfad843",
    "name": "Television",
    "group": "Utility Bills",
    "icon": "tv",
@@ -71,7 +73,7 @@
    "payment": null
   },
   {
-   "id": "6ae70a3c832b7e173e808aa8",
+   "id": "6aede518506a80f9edfad844",
    "name": "Mobile Internet",
    "group": "Utility Bills",
    "icon": "smartphone",
@@ -81,7 +83,7 @@
    "payment": null
   },
   {
-   "id": "6ae70a3c832b7e173e808aa9",
+   "id": "6aede518506a80f9edfad845",
    "name": "Broadband",
    "group": "Utility Bills",
    "icon": "wifi",
@@ -89,19 +91,20 @@
    "template_amount": 140000,
    "status": "paid",
    "payment": {
-    "id": "6ae70a3d832b7e173e808b48",
-    "fixed_expense_id": "6ae70a3c832b7e173e808aa9",
+    "id": "6aede519506a80f9edfad8e4",
+    "fixed_expense_id": "6aede518506a80f9edfad845",
     "cycle": "2026-11",
     "amount_paid": 140000,
     "paid_at": "2026-11-08T06:30:00+00:00",
     "day": "2026-11-08",
     "note": "",
+    "deducted": true,
     "deleted_at": null,
-    "created_at": "2026-11-01T09:45:33.365000+00:00"
+    "created_at": "2026-11-06T14:32:57.197000+00:00"
    }
   },
   {
-   "id": "6ae70a3c832b7e173e808aaa",
+   "id": "6aede518506a80f9edfad846",
    "name": "Claude Pro",
    "group": "Subscriptions",
    "icon": "sparkles",
@@ -109,15 +112,16 @@
    "template_amount": 700000,
    "status": "paid",
    "payment": {
-    "id": "6ae70a3d832b7e173e808b47",
-    "fixed_expense_id": "6ae70a3c832b7e173e808aaa",
+    "id": "6aede519506a80f9edfad8e3",
+    "fixed_expense_id": "6aede518506a80f9edfad846",
     "cycle": "2026-11",
     "amount_paid": 700000,
     "paid_at": "2026-11-07T06:30:00+00:00",
     "day": "2026-11-07",
     "note": "",
+    "deducted": true,
     "deleted_at": null,
-    "created_at": "2026-11-01T09:45:33.360000+00:00"
+    "created_at": "2026-11-06T14:32:57.186000+00:00"
    }
   }
  ],

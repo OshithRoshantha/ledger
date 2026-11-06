@@ -291,6 +291,10 @@ class Ctx:
             return 0
         return sum(g.monthly_reserve for g in self.goals if g.saved_amount < g.target_amount)
 
+    @property
+    def savings_target(self) -> int:
+        return self.cfg.savings_target if self.is_current else 0
+
     def var_rate(self) -> float:
         return self.cur.variable / max(self.day_index, 1)
 
@@ -460,6 +464,7 @@ async def insight_context(ctx: Ctx, cmp: Stats, cmp_meta: dict) -> engine.Insigh
         entries=entries, entry_history=dict(history_map), bills=bills,
         pace_ratio=(cum_cur / cum_cmp) if cum_cmp else None, goals=goal_stats,
         fixed_ratio=pct(cur.fixed + ctx.committed(ctx.span, cur), income) if income else None, fixed_target=FIXED_TARGET,
+        savings_target=ctx.savings_target,
     )
 
 
@@ -537,7 +542,8 @@ async def overview(cfg: AppSettings, label: Optional[str], mode: str) -> dict:
         pending = ctx.pending_bills(ctx.span, cur)
         balance = cur.income - cur.spent
         reserved = ctx.reserved
-        safe = balance - committed - reserved
+        savings_target = ctx.savings_target
+        safe = balance - committed - reserved - savings_target
         remaining_days = ctx.days_left + 1 if ctx.is_current else 0
         allowance = whole(safe / remaining_days) if remaining_days and safe > 0 else (0 if remaining_days else None)
         projected = ctx.projected_spend()
@@ -546,6 +552,7 @@ async def overview(cfg: AppSettings, label: Optional[str], mode: str) -> dict:
 
         hero = {
             "safe_to_spend": safe, "balance": balance, "committed": committed, "reserved": reserved, "income": cur.income,
+            "savings_target": savings_target, "projected_savings": cur.income - projected,
             "spent": cur.spent, "daily_allowance": allowance, "days_remaining": remaining_days, "status": status,
             "elapsed_pct": round(ctx.elapsed * 100), "income_spent_pct": spent_pct,
             "pace_warning": bool(ctx.is_current and spent_pct is not None and spent_pct > ctx.elapsed * 100 + 10),
@@ -1092,7 +1099,7 @@ async def simulate(cfg: AppSettings, amount: int, category_id: PydanticObjectId,
     ctx = await build_ctx(cfg, target.label)
     cur = ctx.cur
     committed = ctx.committed(ctx.span, cur)
-    safe_before = cur.income - cur.spent - committed - ctx.reserved
+    safe_before = cur.income - cur.spent - committed - ctx.reserved - ctx.savings_target
     safe_after = safe_before - amount
     remaining_days = ctx.days_left + 1 if ctx.is_current else max(ctx.days_total, 1)
     extra = {f"var:{category_id}": amount}

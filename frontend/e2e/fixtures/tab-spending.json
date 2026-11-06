@@ -66,12 +66,12 @@
    "budget_used_pct": null
   },
   {
-   "key": "var:6ae70a3c832b7e173e808aae",
+   "key": "var:6aede518506a80f9edfad84a",
    "name": "Bank & Cash Spending",
    "colour": "#D55E00",
    "icon": "landmark",
    "kind": "variable",
-   "id": "6ae70a3c832b7e173e808aae",
+   "id": "6aede518506a80f9edfad84a",
    "archived": false,
    "need_want": "want",
    "unit": "transactions",
@@ -162,12 +162,12 @@
    "budget_used_pct": null
   },
   {
-   "key": "var:6ae70a3c832b7e173e808aad",
+   "key": "var:6aede518506a80f9edfad849",
    "name": "Uber / PickMe",
    "colour": "#0072B2",
    "icon": "car",
    "kind": "variable",
-   "id": "6ae70a3c832b7e173e808aad",
+   "id": "6aede518506a80f9edfad849",
    "archived": false,
    "need_want": "want",
    "unit": "rides",
@@ -196,12 +196,12 @@
    "budget_used_pct": 55.1
   },
   {
-   "key": "var:6ae70a3c832b7e173e808aab",
+   "key": "var:6aede518506a80f9edfad847",
    "name": "Mobile Top-ups",
    "colour": "#009E73",
    "icon": "smartphone",
    "kind": "variable",
-   "id": "6ae70a3c832b7e173e808aab",
+   "id": "6aede518506a80f9edfad847",
    "archived": false,
    "need_want": "need",
    "unit": "top-ups",
@@ -230,12 +230,12 @@
    "budget_used_pct": null
   },
   {
-   "key": "var:6ae70a3c832b7e173e808aac",
+   "key": "var:6aede518506a80f9edfad848",
    "name": "LMT Top-ups",
    "colour": "#F0E442",
    "icon": "ticket",
    "kind": "variable",
-   "id": "6ae70a3c832b7e173e808aac",
+   "id": "6aede518506a80f9edfad848",
    "archived": false,
    "need_want": "need",
    "unit": "top-ups",
@@ -276,7 +276,7 @@
   },
   "reasons": [
    {
-    "id": "6ae70a3c832b7e173e808aaf",
+    "id": "6aede518506a80f9edfad84b",
     "name": "Shopping",
     "colour": "#8B5CF6",
     "icon": "shopping-bag",
@@ -294,7 +294,7 @@
     "budget": 1200000
    },
    {
-    "id": "6ae70a3c832b7e173e808ab1",
+    "id": "6aede518506a80f9edfad84d",
     "name": "Restaurant",
     "colour": "#F43F5E",
     "icon": "utensils",
@@ -312,7 +312,7 @@
     "budget": 600000
    },
    {
-    "id": "6ae70a3c832b7e173e808ab6",
+    "id": "6aede518506a80f9edfad852",
     "name": "Family",
     "colour": "#3B82F6",
     "icon": "users",
@@ -418,7 +418,7 @@
     "diff": 1880000,
     "pct": 671.4,
     "is_new": false,
-    "link": "/spending/6ae70a3c832b7e173e808aae"
+    "link": "/spending/6aede518506a80f9edfad84a"
    },
    {
     "name": "Bank: Shopping",
@@ -650,7 +650,7 @@
  ],
  "top10": [
   {
-   "id": "6ae70a3d832b7e173e808b4e",
+   "id": "6aede519506a80f9edfad8ea",
    "amount": 1500000,
    "day": "2026-11-08",
    "category": "Bank & Cash Spending",
@@ -658,10 +658,10 @@
    "reason": "Shopping",
    "method": "atm",
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aae"
+   "category_id": "6aede518506a80f9edfad84a"
   },
   {
-   "id": "6ae70a3d832b7e173e808b4d",
+   "id": "6aede519506a80f9edfad8e9",
    "amount": 510000,
    "day": "2026-11-07",
    "category": "Bank & Cash Spending",
@@ -669,10 +669,10 @@
    "reason": "Restaurant",
    "method": "card",
    "note": "Birthday dinner",
-   "category_id": "6ae70a3c832b7e173e808aae"
+   "category_id": "6aede518506a80f9edfad84a"
   },
   {
-   "id": "6ae70a3d832b7e173e808b4f",
+   "id": "6aede519506a80f9edfad8eb",
    "amount": 150000,
    "day": "2026-11-10",
    "category": "Bank & Cash Spending",
@@ -680,10 +680,10 @@
    "reason": "Family",
    "method": "bank_transfer",
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aae"
+   "category_id": "6aede518506a80f9edfad84a"
   },
   {
-   "id": "6ae70a3d832b7e173e808b50",
+   "id": "6aede519506a80f9edfad8ec",
    "amount": 100000,
    "day": "2026-11-06",
    "category": "Mobile Top-ups",
@@ -691,10 +691,10 @@
    "reason": null,
    "method": null,
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aab"
+   "category_id": "6aede518506a80f9edfad847"
   },
   {
-   "id": "6ae70a3d832b7e173e808b4c",
+   "id": "6aede519506a80f9edfad8e8",
    "amount": 72000,
    "day": "2026-11-12",
    "category": "Uber / PickMe",
@@ -702,10 +702,10 @@
    "reason": null,
    "method": null,
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aad"
+   "category_id": "6aede518506a80f9edfad849"
   },
   {
-   "id": "6ae70a3d832b7e173e808b4a",
+   "id": "6aede519506a80f9edfad8e6",
    "amount": 61000,
    "day": "2026-11-07",
    "category": "Uber / PickMe",
@@ -713,10 +713,10 @@
    "reason": null,
    "method": null,
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aad"
+   "category_id": "6aede518506a80f9edfad849"
   },
   {
-   "id": "6ae70a3d832b7e173e808b51",
+   "id": "6aede519506a80f9edfad8ed",
    "amount": 60000,
    "day": "2026-11-11",
    "category": "LMT Top-ups",
@@ -724,10 +724,10 @@
    "reason": null,
    "method": null,
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aac"
+   "category_id": "6aede518506a80f9edfad848"
   },
   {
-   "id": "6ae70a3d832b7e173e808b49",
+   "id": "6aede519506a80f9edfad8e5",
    "amount": 48000,
    "day": "2026-11-05",
    "category": "Uber / PickMe",
@@ -735,10 +735,10 @@
    "reason": null,
    "method": null,
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aad"
+   "category_id": "6aede518506a80f9edfad849"
   },
   {
-   "id": "6ae70a3d832b7e173e808b4b",
+   "id": "6aede519506a80f9edfad8e7",
    "amount": 39500,
    "day": "2026-11-09",
    "category": "Uber / PickMe",
@@ -746,7 +746,7 @@
    "reason": null,
    "method": null,
    "note": "",
-   "category_id": "6ae70a3c832b7e173e808aad"
+   "category_id": "6aede518506a80f9edfad849"
   }
  ],
  "frequency": [

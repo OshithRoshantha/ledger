@@ -130,6 +130,8 @@ async def reassign(cfg: AppSettings, chain: Chain, from_day: date, to_day: Optio
     moves: list[dict] = []
     for kind, document in _ENTRY_KINDS:
         async for doc in document.find({"user_id": cfg.user_id, "deleted_at": None, "day": query}):
+            if getattr(doc, "deducted", True) is False:
+                continue  # settled for a chosen cycle from an earlier salary: its date doesn't decide the cycle
             new_label = chain.find(date.fromisoformat(doc.day)).label
             if new_label == doc.cycle:
                 continue

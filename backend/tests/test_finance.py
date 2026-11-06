@@ -97,6 +97,37 @@ async def test_mark_paid_reduces_balance_and_committed_then_unpay_restores(authe
     assert await FixedPayment.find_all().count() == 1
 
 
+async def test_bill_settled_from_earlier_salary_is_not_deducted(authed, freeze_today):
+    freeze_today()
+    await onboard(authed, 10_000_000)
+    _, _, _, bills = await _ids(authed)
+    before = await _hero(authed)
+    p = (await authed.post(f"{API}/fixed-expenses/{bills['Foods & Households']}/pay", json={"date": "2026-11-06"})).json()
+    assert p["deducted"] is True
+    paid = await _hero(authed)
+    assert paid["spent"] == 3_000_000
+
+    r = await authed.patch(f"{API}/fixed-payments/{p['id']}", json={"deducted": False})
+    assert r.status_code == 200 and r.json()["deducted"] is False
+    hero = await _hero(authed)
+    assert hero["spent"] == 0 and hero["balance"] == before["balance"]  # nothing leaves this salary
+    assert hero["committed"] == paid["committed"]  # but the bill is no longer pending
+
+    status = (await authed.get(f"{API}/fixed-expenses")).json()
+    foods = next(i for i in status["items"] if i["name"] == "Foods & Households")
+    assert foods["status"] == "paid" and foods["payment"]["deducted"] is False
+    tab = (await authed.get(f"{API}/analytics/bills")).json()
+    item = next(i for i in tab["status"]["items"] if i["name"] == "Foods & Households")
+    assert item["status"] == "paid" and item["paid_amount"] == 3_000_000
+    sp = (await authed.get(f"{API}/analytics/spending")).json()
+    assert sp["total"] == 0
+    trends = (await authed.get(f"{API}/analytics/trends")).json()
+    assert trends["rows"][-1]["spent"] == 0 and trends["networth"][-1]["cumulative"] == 10_000_000
+
+    await authed.patch(f"{API}/fixed-payments/{p['id']}", json={"deducted": True})
+    assert (await _hero(authed)) == paid
+
+
 async def test_amount_change_applies_from_current_cycle_only(authed, freeze_today):
     freeze_today()
     _, _, _, bills = await _ids(authed)

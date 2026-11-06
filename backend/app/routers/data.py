@@ -94,7 +94,7 @@ async def export_csv(cfg: AppSettings = Depends(user_settings)) -> Response:
     for p in await FixedPayment.find({"user_id": uid, "deleted_at": None}).to_list():
         fe = fixed.get(p.fixed_expense_id)
         rows.append([p.day, p.cycle, "fixed_bill", fe.name if fe else "", fe.group if fe else "", "", "",
-                     _decimal(-p.amount_paid), "paid", p.note])
+                     _decimal(-p.amount_paid), "paid" if p.deducted else "paid (not deducted)", p.note])
     for x in await ExpenseEntry.find({"user_id": uid, "deleted_at": None}).to_list():
         rows.append([x.day, x.cycle, "expense", cats.get(x.category_id, ""), "", x.method or "",
                      reasons.get(x.reason_id, "") if x.reason_id else "", _decimal(-x.amount), "", x.note])

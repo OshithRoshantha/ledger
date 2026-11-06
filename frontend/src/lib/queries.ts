@@ -268,7 +268,8 @@ export function useUnpayBill(cycle?: string) {
       await qc.cancelQueries({ queryKey: ['bills', cycle] });
       const bills = qc.getQueryData<BillsResponse>(['bills', cycle]);
       if (bills) qc.setQueryData<BillsResponse>(['bills', cycle], billsAfterPay(bills, bill.id, 0, null));
-      const snapshot = patchOverviews(qc, bill.payment!.day, (o) => overviewAfterPay(o, bill, bill.payment!.amount_paid, false));
+      const refund = bill.payment!.deducted === false ? 0 : bill.payment!.amount_paid;
+      const snapshot = patchOverviews(qc, bill.payment!.day, (o) => overviewAfterPay(o, bill, refund, false));
       return { bills, snapshot };
     },
     onSuccess: (bill) =>
@@ -282,6 +283,17 @@ export function useUnpayBill(cycle?: string) {
       onError(e);
     },
     onSettled: () => invalidateMoney(qc),
+  });
+}
+
+/** A settled bill paid from an earlier salary is not deducted from this cycle. */
+export function useSetPaymentDeducted() {
+  const qc = useQueryClient();
+  const onError = useToastError();
+  return useMutation({
+    mutationFn: ({ id, deducted }: { id: string; deducted: boolean }) => api(`/fixed-payments/${id}`, { method: 'PATCH', body: { deducted } }),
+    onSuccess: () => invalidateMoney(qc),
+    onError,
   });
 }
 

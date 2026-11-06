@@ -253,6 +253,8 @@ class FixedPayment(Document):
     paid_at: datetime
     day: str
     note: str = ""
+    # False = settled for this cycle but paid from an earlier salary: not deducted from this cycle
+    deducted: bool = True
     deleted_at: Optional[datetime] = None
     created_at: datetime = Field(default_factory=utcnow)
 

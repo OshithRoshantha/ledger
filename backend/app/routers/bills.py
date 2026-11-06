@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 
 from app.core.deps import oid, user_settings
 from app.models import AmountHistory, AppSettings, FixedExpense, FixedPayment, utcnow
-from app.schemas import CycleLabel, FixedExpenseIn, FixedExpensePatch, PayIn, ReorderIn
+from app.schemas import CycleLabel, FixedExpenseIn, FixedExpensePatch, PayIn, PaymentPatch, ReorderIn
 from app.services.cycles import display_label, local_day_to_utc
 from app.services.ledger import (
     current_cycle,
@@ -103,6 +103,17 @@ async def pay_bill(expense_id: str, body: PayIn, cfg: AppSettings = Depends(user
         note=body.note,
     )
     await payment.insert()
+    return dump(payment)
+
+
+@router.patch("/fixed-payments/{payment_id}")
+async def edit_payment(payment_id: str, body: PaymentPatch, cfg: AppSettings = Depends(user_settings)) -> dict:
+    """Mark a settled bill as paid from an earlier salary (or undo that)."""
+    payment = await FixedPayment.find_one({"_id": oid(payment_id), "user_id": cfg.user_id, "deleted_at": None})
+    if payment is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Not found")
+    payment.deducted = body.deducted
+    await payment.save()
     return dump(payment)
 
 

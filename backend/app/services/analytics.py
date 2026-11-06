@@ -75,7 +75,8 @@ async def load_buckets(uid: PydanticObjectId, labels: list[str]) -> Buckets:
     ])
     pay = await _agg(FixedPayment, [
         {"$match": match},
-        {"$group": {"_id": {"c": "$cycle", "d": "$day", "f": "$fixed_expense_id"}, "t": {"$sum": "$amount_paid"}, "n": {"$sum": 1}}},
+        {"$group": {"_id": {"c": "$cycle", "d": "$day", "f": "$fixed_expense_id", "x": "$deducted"},
+                    "t": {"$sum": "$amount_paid"}, "n": {"$sum": 1}}},
     ])
     inc = await _agg(IncomeEntry, [
         {"$match": {**match, "status": "received"}},
@@ -88,7 +89,8 @@ async def load_buckets(uid: PydanticObjectId, labels: list[str]) -> Buckets:
 class Stats:
     income: int = 0
     income_by_source: dict = field(default_factory=dict)
-    fixed_by_id: dict = field(default_factory=dict)  # bill id -> paid
+    fixed_by_id: dict = field(default_factory=dict)  # bill id -> amount deducted from this cycle
+    settled: dict = field(default_factory=dict)  # bill id -> amount paid, deducted here or not
     pay_day: dict = field(default_factory=dict)  # bill id -> day paid
     var_by_cat: dict = field(default_factory=dict)  # category id -> [total, count]
     bank_reason: dict = field(default_factory=dict)  # reason id -> [total, count]
@@ -130,8 +132,11 @@ def stats_for(b: Buckets, label: str, cutoff: Optional[date], bank_ids: set) -> 
         i = r["_id"]
         if i["c"] != label or (lim and i["d"] >= lim):
             continue
-        s.fixed_by_id[i["f"]] = s.fixed_by_id.get(i["f"], 0) + r["t"]
+        s.settled[i["f"]] = s.settled.get(i["f"], 0) + r["t"]
         s.pay_day.setdefault(i["f"], i["d"])
+        if i.get("x") is False:  # paid from an earlier salary: settled, but not spending here
+            continue
+        s.fixed_by_id[i["f"]] = s.fixed_by_id.get(i["f"], 0) + r["t"]
         s.daily[i["d"]] = s.daily.get(i["d"], 0) + r["t"]
     for r in b.exp:
         i = r["_id"]
@@ -161,7 +166,7 @@ def average(stats: list[Stats]) -> Stats:
         return Stats()
     n = len(stats)
     out = Stats(income=round(sum(s.income for s in stats) / n))
-    for attr in ("income_by_source", "fixed_by_id", "reason_method", "daily", "var_daily"):
+    for attr in ("income_by_source", "fixed_by_id", "settled", "reason_method", "daily", "var_daily"):
         acc: dict = defaultdict(int)
         for s in stats:
             for k, v in getattr(s, attr).items():
@@ -275,7 +280,7 @@ class Ctx:
         return [fe for fe in self.fixed_expenses if fixed_applies(fe, label)]
 
     def pending_bills(self, span: Span, st: Stats) -> list[FixedExpense]:
-        return [fe for fe in self.applicable_bills(span.label) if fe.id not in st.fixed_by_id]
+        return [fe for fe in self.applicable_bills(span.label) if fe.id not in st.settled]
 
     def committed(self, span: Span, st: Stats) -> int:
         return sum(fixed_amount_for_cycle(fe, span.label) or 0 for fe in self.pending_bills(span, st))
@@ -439,8 +444,8 @@ async def insight_context(ctx: Ctx, cmp: Stats, cmp_meta: dict) -> engine.Insigh
 
     bills = []
     for fe in ctx.applicable_bills(ctx.span.label):
-        paid = cur.fixed_by_id.get(fe.id)
-        hist = [ctx.stats(s).fixed_by_id[fe.id] for s in closed[-6:] if fe.id in ctx.stats(s).fixed_by_id]
+        paid = cur.settled.get(fe.id)
+        hist = [ctx.stats(s).settled[fe.id] for s in closed[-6:] if fe.id in ctx.stats(s).settled]
         bills.append(engine.BillStat(id=str(fe.id), name=fe.name, paid=paid, template=fixed_amount_for_cycle(fe, ctx.span.label) or fe.amount,
                                      avg6=(sum(hist) / len(hist)) if len(hist) >= 3 else None))
 
@@ -490,7 +495,7 @@ def health(ctx: Ctx, span: Span, st: Stats, hist: list[Stats], elapsed: float, p
         comps.append(("savings", "Savings rate", 30, 0.0, "No income recorded"))
     bills = ctx.applicable_bills(span.label)
     if bills:
-        paid = sum(1 for fe in bills if fe.id in st.fixed_by_id)
+        paid = sum(1 for fe in bills if fe.id in st.settled)
         score = 100 * (1 - (len(bills) - paid) / len(bills) * min(1.0, elapsed))
         comps.append(("bills", "Bills paid on time", 20, score, f"{paid} of {len(bills)} paid"))
     hist_var = [h.variable for h in hist if h.income or h.spent]
@@ -792,19 +797,19 @@ async def bills(cfg: AppSettings, label: Optional[str], months: int) -> dict:
         items, series, timing, annual, tva = [], [], [], [], []
         applicable = ctx.applicable_bills(ctx.span.label)
         for fe in ctx.fixed_expenses:
-            if fe not in applicable and fe.id not in cur.fixed_by_id and not fe.is_active:
+            if fe not in applicable and fe.id not in cur.settled and not fe.is_active:
                 continue
             template = fixed_amount_for_cycle(fe, ctx.span.label) or fe.amount
-            paid = cur.fixed_by_id.get(fe.id)
+            paid = cur.settled.get(fe.id)
             pay_day = cur.pay_day.get(fe.id)
             items.append({"id": str(fe.id), "name": fe.name, "group": fe.group, "icon": fe.icon, "colour": fe.colour, "template": template,
                           "status": "paid" if paid is not None else "pending", "paid_amount": paid, "paid_day": pay_day,
-                          "day_of_cycle": (date.fromisoformat(pay_day) - ctx.span.start).days + 1 if pay_day else None})
+                          "day_of_cycle": ctx.span.day_index(date.fromisoformat(pay_day)) + 1 if pay_day else None})
             pts = []
             for s in spans:
                 st = ctx.stats(s)
-                pts.append({"cycle": s.label, "label": short_month(s.label), "amount": st.fixed_by_id.get(fe.id)})
-            hist6 = [ctx.stats(s).fixed_by_id[fe.id] for s in closed[-6:] if fe.id in ctx.stats(s).fixed_by_id]
+                pts.append({"cycle": s.label, "label": short_month(s.label), "amount": st.settled.get(fe.id)})
+            hist6 = [ctx.stats(s).settled[fe.id] for s in closed[-6:] if fe.id in ctx.stats(s).settled]
             avg6 = round(sum(hist6) / len(hist6)) if hist6 else None
             latest = paid if paid is not None else (hist6[-1] if hist6 else None)
             series.append({"id": str(fe.id), "name": fe.name, "colour": fe.colour, "points": pts, "avg6": avg6, "latest": latest,
@@ -814,12 +819,12 @@ async def bills(cfg: AppSettings, label: Optional[str], months: int) -> dict:
             for s in spans:
                 d = ctx.stats(s).pay_day.get(fe.id)
                 if d:
-                    days_paid.append((date.fromisoformat(d) - s.start).days + 1)
+                    days_paid.append(s.day_index(date.fromisoformat(d)) + 1)
             timing.append({"id": str(fe.id), "name": fe.name, "avg_day": round(sum(days_paid) / len(days_paid), 1) if days_paid else None,
                            "samples": len(days_paid)})
             if fe.is_active:
                 annual.append({"id": str(fe.id), "name": fe.name, "colour": fe.colour, "monthly": fe.amount, "annual": fe.amount * 12})
-            tmpl6 = [fixed_amount_for_cycle(fe, s.label) or 0 for s in closed[-6:] if fe.id in ctx.stats(s).fixed_by_id]
+            tmpl6 = [fixed_amount_for_cycle(fe, s.label) or 0 for s in closed[-6:] if fe.id in ctx.stats(s).settled]
             tva.append({"id": str(fe.id), "name": fe.name, "template": template, "actual": paid,
                         "avg_template": round(sum(tmpl6) / len(tmpl6)) if tmpl6 else None, "avg_actual": avg6})
         annual.sort(key=lambda a: -a["annual"])
@@ -834,7 +839,7 @@ async def bills(cfg: AppSettings, label: Optional[str], months: int) -> dict:
         cur_ratio = ratio[-1]["ratio"] if ratio else None
         return {
             "meta": meta(ctx),
-            "status": {"paid_count": paid_n, "total_count": len(items), "paid_amount": cur.fixed,
+            "status": {"paid_count": paid_n, "total_count": len(items), "paid_amount": sum(cur.settled.values()),
                        "pending_amount": ctx.committed(ctx.span, cur), "items": items},
             "trends": series,
             "trend_takeaway": (f"{flagged[0]['name']} is {flagged[0]['above_avg_pct']:.0f}% above its 6-cycle average." if flagged
@@ -898,7 +903,7 @@ async def trends(cfg: AppSettings, label: Optional[str], months: int) -> dict:
         uid = cfg.user_id
         totals: dict[str, dict] = defaultdict(lambda: {"income": 0, "spent": 0})
         for document, fld, key, extra in ((IncomeEntry, "$amount", "income", {"status": "received"}),
-                                          (FixedPayment, "$amount_paid", "spent", {}), (ExpenseEntry, "$amount", "spent", {})):
+                                          (FixedPayment, "$amount_paid", "spent", {"deducted": {"$ne": False}}), (ExpenseEntry, "$amount", "spent", {})):
             for r in await _agg(document, [{"$match": {"user_id": uid, "deleted_at": None, **extra}},
                                            {"$group": {"_id": "$cycle", "t": {"$sum": fld}}}]):
                 totals[r["_id"]][key] += r["t"]

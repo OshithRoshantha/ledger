@@ -129,6 +129,8 @@ export interface Payment {
   fixed_expense_id: string;
   cycle: string;
   amount_paid: number;
+  /** false = settled here but paid from an earlier salary, so not deducted from this cycle */
+  deducted?: boolean;
   paid_at: string;
   day: string;
   note: string;

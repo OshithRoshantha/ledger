@@ -5,7 +5,7 @@ import { AttributionChip } from '@/components/ui/AttributionChip';
 import { Button, Field, inputClass } from '@/components/ui/primitives';
 import { formatDay, isoDay } from '@/lib/cycle';
 import { centsToRaw, formatRs, parseToCents } from '@/lib/money';
-import { usePayBill, useUnpayBill } from '@/lib/queries';
+import { usePayBill, useSetPaymentDeducted, useUnpayBill } from '@/lib/queries';
 import type { BillItem } from '@/lib/types';
 
 export function PaySheet({ bill, cycle, defaultDay, onClose }: { bill: BillItem | null; cycle?: string; defaultDay?: string; onClose: () => void }) {
@@ -14,6 +14,7 @@ export function PaySheet({ bill, cycle, defaultDay, onClose }: { bill: BillItem 
   const [note, setNote] = useState('');
   const pay = usePayBill(cycle);
   const unpay = useUnpayBill(cycle);
+  const setDeducted = useSetPaymentDeducted();
 
   useEffect(() => {
     if (bill) {
@@ -25,6 +26,7 @@ export function PaySheet({ bill, cycle, defaultDay, onClose }: { bill: BillItem 
 
   const cents = parseToCents(raw) ?? 0;
   const paid = bill?.status === 'paid' && bill.payment;
+  const fromEarlier = bill?.payment?.deducted === false;
   const diff = bill ? cents - bill.template_amount : 0;
 
   return (
@@ -35,17 +37,30 @@ export function PaySheet({ bill, cycle, defaultDay, onClose }: { bill: BillItem 
       footer={
         bill ? (
           paid ? (
-            <Button
-              variant="danger"
-              block
-              disabled={bill.payment!.id === 'optimistic'}
-              onClick={() => {
-                unpay.mutate(bill);
-                onClose();
-              }}
-            >
-              Mark unpaid
-            </Button>
+            <div className="grid gap-2">
+              <Button
+                variant="secondary"
+                block
+                loading={setDeducted.isPending}
+                disabled={bill.payment!.id === 'optimistic'}
+                onClick={() =>
+                  setDeducted.mutate({ id: bill.payment!.id, deducted: !fromEarlier }, { onSuccess: onClose })
+                }
+              >
+                {fromEarlier ? 'Deduct from this salary' : 'Paid from an earlier salary'}
+              </Button>
+              <Button
+                variant="danger"
+                block
+                disabled={bill.payment!.id === 'optimistic'}
+                onClick={() => {
+                  unpay.mutate(bill);
+                  onClose();
+                }}
+              >
+                Mark unpaid
+              </Button>
+            </div>
           ) : (
             <Button
               block
@@ -66,7 +81,9 @@ export function PaySheet({ bill, cycle, defaultDay, onClose }: { bill: BillItem 
           <Row label="Amount paid" value={formatRs(bill.payment!.amount_paid)} />
           <Row label="Usual amount" value={formatRs(bill.template_amount)} />
           <Row label="Paid on" value={formatDay(bill.payment!.day, { weekday: 'short', day: 'numeric', month: 'long' })} />
+          <Row label="Comes out of" value={fromEarlier ? 'An earlier salary' : 'This cycle’s salary'} />
           {bill.payment!.note ? <Row label="Note" value={bill.payment!.note} /> : null}
+          {fromEarlier ? <p className="text-[13px] text-muted">Settled for this cycle, but not deducted from this cycle’s salary.</p> : null}
         </dl>
       ) : bill ? (
         <div className="space-y-3">

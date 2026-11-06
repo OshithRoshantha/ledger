@@ -85,6 +85,7 @@ function BillRow({ item, overdue, onClick }: { item: BillItem; overdue: boolean;
           {formatRs(amount, { whole: amount % 100 === 0 })}
           {paid && amount !== item.template_amount ? <span className="ml-1 text-muted">(usual {formatRs(item.template_amount, { whole: true })})</span> : null}
         </p>
+        {item.payment?.deducted === false ? <p className="text-[12px] text-muted">From earlier salary</p> : null}
       </div>
       <AnimatePresence mode="wait" initial={false}>
         {paid ? (

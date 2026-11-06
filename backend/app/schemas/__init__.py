@@ -106,6 +106,10 @@ class PayIn(Strict):
     note: Note = ""
 
 
+class PaymentPatch(Strict):
+    deducted: bool
+
+
 class FixedExpenseIn(Strict):
     name: Name
     group: Annotated[str, Field(min_length=1, max_length=40)]
